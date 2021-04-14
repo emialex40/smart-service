@@ -1,0 +1,19 @@
+.call {
+    padding: 130px 0;
+    position: relative;
+    @include _respond-to(768) {
+        padding: 60px 0;
+    }
+    &_header {
+        color: $white;
+        margin-top: 50px;
+    }
+    &_button {
+        margin-top: 40px;
+    }
+    &_btn {
+        span {
+            padding-right: 10px;
+        }
+    }
+}

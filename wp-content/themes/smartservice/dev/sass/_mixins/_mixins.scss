@@ -1,0 +1,40 @@
+@mixin _respond-to($dig) {
+  @media (max-width: $dig + px) {
+    @content
+  }
+}
+
+@mixin _respond-min($dig) {
+  @media screen and (min-width: $dig + px) {
+    @content
+  }
+}
+
+
+@mixin _respond-from($max, $min) {
+  @media only screen and (max-width: $max + px) and (min-width: $min + px) {
+    @content
+  }
+}
+
+
+
+
+@mixin _ul_clear() {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin _bg_img_in($img) {
+    background-image: url($img);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@mixin _bg_img_out {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

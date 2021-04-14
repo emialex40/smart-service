@@ -1,0 +1,59 @@
+#lang_switcher {
+  cursor: pointer;
+  width: 36px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include _respond-to(992) {
+    margin-right: 15px;
+  }
+  .qtranxs_widget {
+    position: absolute;
+    left: 0;
+    top: 20px;
+  }
+  .language-chooser {
+    .language-chooser-item {
+      display: none;
+      text-transform: uppercase;
+      background: transparent;
+      a {
+        color: $dark;
+        font-weight: 700;
+      }
+    }
+  }
+  .lang_current {
+    color: $dark;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  i {
+    margin-left: 5px;
+  }
+}
+
+#lang_chooser_mob {
+  .language-chooser {
+    display: block;
+    .language-chooser-item {
+      display: inline-block;
+      background: transparent;
+      padding-left: 10px;
+      &:first-child {
+        padding-left: 0;
+      }
+      a {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $dark;
+      }
+      &.active {
+      a {
+        color: $blue;
+      }
+    }
+    }
+  }
+}

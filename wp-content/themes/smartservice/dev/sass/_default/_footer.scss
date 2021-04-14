@@ -1,0 +1,74 @@
+.footer {
+    padding: 96px 0 6px;
+    @include _respond-to(768) {
+        padding: 50px 0 6px;
+    }
+    &_wrapper {
+        padding: 30px 0 50px;
+        h6 {
+            padding-bottom: 45px;
+            @include _respond-to(768) {
+                font-size: 18px;
+                margin-top: 45px;
+                padding-bottom: 20px;
+            }
+            @include _respond-to(480) {
+                padding-bottom: 45px;
+            }
+        }
+    }
+    &_logo {
+        max-width: 160px;
+    }
+    &_desc {
+        padding: 30px 0 40px;
+        max-width: 240px;
+        line-height: 24px;
+        @include _respond-to(768) {
+            max-width: none;
+            padding: 30px 0 45px;
+        }
+    }
+    &_social {
+        @include _respond-to(768) {
+            margin: 0;
+        }
+    }
+    &_bottom {
+        width: 100%;
+        border-top: 1px solid $grey-light;
+        padding: 25px 0;
+        span {
+            font-size: 14px;
+            font-weight: 300;
+            color: $grey-light;
+        }
+    }
+    &_menu {
+       li {
+           padding: 5px 0;
+           @include _respond-to(768) {
+               padding: 6px 0;
+           }
+           a {
+               color: $font-color;
+               &:hover {
+                   color: $blue;
+               }
+           }
+       } 
+    }
+    &_address {
+        a {
+            display: block;
+            margin-top: 29px;
+            color: $blue;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        p {
+            line-height: 24px;
+        }
+    }
+}

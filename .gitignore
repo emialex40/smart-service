@@ -1,0 +1,11 @@
+.gitignore
+package-lock.json
+wp-config.php
+
+/.history
+/.vscode
+/node_modules
+**/img
+/.idea
+/wp-admin
+/wp-includes

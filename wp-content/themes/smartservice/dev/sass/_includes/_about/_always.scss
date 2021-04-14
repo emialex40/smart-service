@@ -1,0 +1,45 @@
+.always {
+    &_wrap {
+        padding-left: 40px;
+        @include _respond-to(991) {
+            padding: 30px 15px 0;
+        }
+    }
+    &_header {
+        line-height: 1.1;
+    }
+    &_icon {
+        width: 55px;
+        height: 55px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+    &_text {
+        padding-top: 25px;
+    }
+    &_adventages {
+        padding-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &_adv {
+        width: 45%;
+        @include _respond-to(480) {
+            width: 100%;
+            padding-bottom: 20px;
+        }
+        h5 {
+            font-size: 18px;
+            padding-top: 20px;
+            height: 58px;
+        }
+        &_text {
+            padding-top: 30px;
+        }
+    }
+    &_button {
+        margin-top: 30px;
+    }
+}

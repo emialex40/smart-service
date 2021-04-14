@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import "_mixins/settings";
+@import "_mixins/mixins";
+/* bootstrap styles */
+@import "_libs/_bootstrap/bootstrap-grid";
+@import "_libs/slick";
+@import "_libs/slick-theme";
+
+// animate
+@import "_libs/_animate/animate.min.css";
+/* defualt styles */
+@import "_default/default";
+/* humburger styles */
+@import "_default/hamburger";
+/* all styles */
+@import "_default/header";
+//@import "_default/menu";
+@import "_default/mobmenu";
+
+@import "_includes/_blocks/video";
+@import "_includes/_blocks/post_list";
+@import "_includes/_blocks/pagination";
+@import "_includes/_blocks/lang_chooser";
+
+/* homepage */
+@import "_includes/_home/hero";
+@import "_includes/_home/boss";
+@import "_includes/_home/services";
+@import "_includes/_home/packeges";
+@import "_includes/_home/freedom";
+@import "_includes/_home/rewiews";
+@import "_includes/_home/info";
+
+/* about page */
+@import "_includes/_about/cool";
+@import "_includes/_about/always";
+@import "_includes/_about/principles";
+@import "_includes/_about/time";
+@import "_includes/_about/call";
+
+@import "_includes/_contacts/contacts";
+
+@import "_includes/_blog/single_blog";
+@import "_includes/_blog/blog_list";
+
+
+@import "_default/footer";

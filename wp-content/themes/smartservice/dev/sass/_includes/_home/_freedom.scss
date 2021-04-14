@@ -1,0 +1,54 @@
+.freedom {
+    padding: 130px 0 90px;
+    background-repeat: no-repeat;
+    background-size: 50vw 100%;
+    background-position: 0 0;
+    background-color: $grey-ultra-light;
+    @include _respond-to(768) {
+        background-image: none !important;
+        padding: 50px 0 70px;   
+    }
+    &_wrapper {
+        padding-left: 30px;
+        @include _respond-to(768) {
+            padding-left: 0;
+        }
+        h2 {
+            padding-bottom: 25px;
+        }
+    }
+    &_text {
+        p {
+            padding-bottom: 20px;
+            font-weight: 300;
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+    &_btn {
+        margin-top: 60px;
+    }
+}
+
+.waranty {
+    padding: 130px 0 90px;
+    background-repeat: no-repeat;
+    background-position: 50vw 0;
+    background-size: 50vw auto;
+
+    background-color: $white; // $grey-ultra-light;
+    @include _respond-to(768) {
+        background-image: none !important;
+        padding: 50px 0 50px;
+    }
+    &_wrapper {
+        padding-right: 25px;
+        @include _respond-to(768) {
+            padding-right: 0;
+        }
+        h2 {
+            padding-bottom: 25px;
+        }
+    }
+}

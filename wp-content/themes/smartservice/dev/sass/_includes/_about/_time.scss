@@ -1,0 +1,27 @@
+.time {
+    padding: 50px 0;
+    background: $grey-ultra-light;
+    &_wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    &_header {
+        margin-top: 55px;
+    }
+    &_text {
+        padding-top: 45px;
+    }
+    &_image {
+        box-sizing: border-box;
+    }
+    &_button {
+        margin-top: 45px;
+    }
+    &_none {
+        @include _respond-to(768) {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,129 @@
+.cool {
+    padding: 128px 0;
+    @include _respond-to(480) {
+        padding: 60px 0;
+    }
+    &_header {
+        margin-top: 60px;
+        line-height: 1.1;
+    }
+    &_subtitle {
+        display: block;
+        padding-top: 55px;
+        font-size: 18px;
+        color: $grey-light2;
+        line-height: 1.6;
+        @include _respond-to(375) {
+            font-size: 16px;
+            line-height: 1.3;
+        }
+    }
+    &_text {
+        padding-top: 55px;
+        @include _respond-to(375) {
+            padding-top: 25px;
+        }
+        p {
+            padding-bottom: 35px;
+            @include _respond-to(375) {
+                padding-bottom: 15px;
+            }
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+    &_images {
+        padding-top: 220px;
+        @include _respond-to(991) {
+            padding-top: 30px;
+        }
+    }
+    &_imgs {
+        position: relative;
+        // height: 500px;
+        @include _respond-to(991) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            @include _respond-to(991) {
+                justify-content: center;
+            }
+        }
+        &_item {
+            width: 350px;
+            height: 350px;
+            min-width: 250px;
+            min-height: 250px;
+            position: absolute;
+            @include _respond-to(991) {
+                position: static;
+            }
+            @include _respond-to(480) {
+                width: 100%;
+                height: 100%;
+                min-width: auto;
+                min-height: auto;
+            }
+        }
+        &_top {
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+        &_bottom {
+            top: 169px;
+            @include _respond-to(991) {
+                display: none;
+            }
+    left: 185px;
+            z-index: 2;
+        }
+    }
+    &_counter {
+        padding-top: 100px;
+        @include _respond-to(991) {
+            padding-top: 40px;
+        }
+        &_wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        &_item {
+            width: 40%;
+            @include _respond-to(480) {
+                width: 100%;
+            }
+        }
+        &_num {
+            display: block;
+            font-size: 70px;
+            font-weight: 200;
+            color: $black-light;
+            @include _respond-to(480) {
+                font-size: 55px;
+            }
+        }
+        &_name {
+            display: block;
+            font-size: 18px;
+            color: $black-light;
+            position: relative;
+            padding-top: 20px;
+            &:before {
+                content: '';
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: $blue;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+        &_text {
+            padding-top: 35px;
+        }
+    }
+}

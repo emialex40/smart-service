@@ -1,0 +1,64 @@
+.principles {
+    padding: 130px 0;
+    @include _respond-to(768) {
+        padding: 60px 0;
+    }
+    &_titles {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    &_header {
+        padding: 50px 0 40px;
+    }
+    &_text {
+        line-height: 1.5;
+    }
+    &_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        @include _respond-to(768) {
+            margin-top: 0;
+        }
+    }
+    &_item {
+        width: calc(100% / 3);
+        padding: 48px 30px;
+        box-sizing: border-box;
+        &:nth-child(2) {
+            background: $grey-ultra-light;
+        }
+        @include _respond-to(768) {
+            width: 100%;
+        }
+        &_icon {
+            width: 100px;
+            height: 100px;
+            background:$blue;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .3s ease-in-out;
+            margin: 0 auto;
+            &:hover {
+                transform: translateY(-10px)
+            }
+        }
+        &_title {
+            margin-top: 30px;
+        }
+        &_text {
+            padding-top: 20px;
+        }
+    }
+    &_button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 55px;
+        @include _respond-to(480) {
+            margin-top: 0;
+        }
+    }
+}
