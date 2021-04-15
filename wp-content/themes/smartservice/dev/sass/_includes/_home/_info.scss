@@ -1,7 +1,7 @@
 .info {
     padding: 130px 0;
     position: relative;
-    @include _respond-to(991) {
+    @include _respond-to(992) {
         padding: 60px 0;
     }
     &_social {
@@ -28,6 +28,9 @@
         top: 0;
         left: 0;
         right: 0;
+        @include _respond-to(992) {
+            background-attachment: inherit;
+        }
     }
     &_wrapper {
         display: flex;
@@ -52,6 +55,12 @@
         box-shadow: 0 0 19px 3px rgba(0, 0, 0, .15);
         // justify-content: center;
         box-sizing: border-box;
+        @include _respond-to(1199) {
+            width: 170px;
+        }
+        @include _respond-to(992) {
+            width: 190px;
+        }
         @include _respond-to(768) {
             width: 100%;
             margin-bottom: 20px;

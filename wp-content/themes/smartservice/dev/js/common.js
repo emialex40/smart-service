@@ -87,7 +87,7 @@ jQuery(document).ready(function ($) {
     $('.reviews_slider').slick({
         slidesToShow: 2,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 5000,
         arrows: true,
         variableWidth: true,
