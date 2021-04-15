@@ -8,6 +8,9 @@
   @include _respond-to(992) {
     margin-right: 15px;
   }
+  @include _respond-to(768) {
+    display: none;
+  }
   .qtranxs_widget {
     position: absolute;
     left: 0;

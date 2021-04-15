@@ -1,6 +1,7 @@
 .gitignore
 package-lock.json
 wp-config.php
+.DS_Store
 
 /.history
 /.vscode

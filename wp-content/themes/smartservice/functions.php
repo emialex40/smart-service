@@ -268,38 +268,6 @@ function create_post_type()
 {
 //post type
     $post_type_labels = array(
-        'name' => esc_html__('Пакети віджет', 'themename'),
-        'singular_name' => esc_html__('Пакети віджет', 'themename'),
-        'add_new' => esc_html__('Додати', 'themename'),
-        'add_new_item' => esc_html__('Додати', 'themename'),
-        'edit_item' => esc_html__('Редагувати', 'themename'),
-        'new_item' => esc_html__('Новий', 'themename'),
-        'view_item' => esc_html__('Дивитись', 'themename'),
-        'search_items' => esc_html__('Шукати', 'themename'),
-        'not_found' => esc_html__('Не знайдено', 'themename'),
-        'parent_item_colon' => '',
-    );
-    $description = get_option(esc_html__('Додавання пакетів на головной сторінці'));
-    $post_type_args = array(
-        'labels' => apply_filters('inspiry_property_post_type_labels', $post_type_labels),
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'query_var' => true,
-        'has_archive' => true,
-        'capability_type' => 'post',
-        'hierarchical' => true,
-        'menu_icon' => 'dashicons-cart',
-        'menu_position' => 25,
-        'description' => $description,
-        'supports' => array('title', 'thumbnail'),
-        'rewrite' => array(
-            'slug' => apply_filters('inspiry_property_slug', 'home-packs'),
-        ),
-    );
-    register_post_type('home-packs', $post_type_args);
-
-    $post_type_labels = array(
         'name' => esc_html__('Послуги', 'themename'),
         'singular_name' => esc_html__('Послуга', 'themename'),
         'add_new' => esc_html__('Додати послугу', 'themename'),
@@ -360,19 +328,19 @@ function create_post_type()
     register_taxonomy('packages_flats', array('service-pack'), array(
         'label' => 'Кавртири пакети', // определяется параметром $labels->name
         'labels' => array(
-            'name' => 'Кавртири пакети',
-            'singular_name' => 'Кавртири пакети',
-            'search_items' => 'Шукати Кавртири пакети',
-            'all_items' => 'Всі Кавртири пакети',
-            'parent_item' => 'Батьківська Кавртири пакети',
-            'parent_item_colon' => 'Батьківська Кавртири пакети:',
-            'edit_item' => 'Редагувати Кавртири пакети',
-            'update_item' => 'Оновити Кавртири пакети',
-            'add_new_item' => 'Додати Кавртири пакети',
-            'new_item_name' => 'Нова Кавртири пакети',
-            'menu_name' => 'Розділ Кавртири пакети',
+            'name' => 'Квартири пакети',
+            'singular_name' => 'Квартири пакети',
+            'search_items' => 'Шукати Квартири пакети',
+            'all_items' => 'Всі Квартири пакети',
+            'parent_item' => 'Батьківська Квартири пакети',
+            'parent_item_colon' => 'Батьківська Квартири пакети:',
+            'edit_item' => 'Редагувати Квартири пакети',
+            'update_item' => 'Оновити Квартири пакети',
+            'add_new_item' => 'Додати Квартири пакети',
+            'new_item_name' => 'Нова Квартири пакети',
+            'menu_name' => 'Розділ Квартири пакети',
         ),
-        'description' => 'Кавртири пакети', // описание таксономии
+        'description' => 'Квартири пакети', // описание таксономии
         'public' => true,
         'show_in_nav_menus' => false, // равен аргументу public
         'show_ui' => true, // равен аргументу public
