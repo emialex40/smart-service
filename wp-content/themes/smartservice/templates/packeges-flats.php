@@ -36,7 +36,7 @@
             <div class="packages_item<?php echo $class; ?>">
                 <div class="packages_item_header">
                     <div class="packages_item_icon">
-                        <?php include 'package-icon' . $count . '.php'; ?>
+                        <?php include '' . $taxonomy . '/package-icon' . $count . '.php'; ?>
                     </div>
                     <h3><?php echo $term->name; ?></h3>
                 </div>

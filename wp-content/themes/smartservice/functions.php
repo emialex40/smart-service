@@ -325,6 +325,7 @@ function create_post_type()
         'show_admin_column' => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
     ));
 
+    // flats
     register_taxonomy('packages_flats', array('service-pack'), array(
         'label' => 'Кавртири пакети', // определяется параметром $labels->name
         'labels' => array(
@@ -350,56 +351,7 @@ function create_post_type()
         'show_admin_column' => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
     ));
 
-    register_taxonomy('packages_home', array('service-pack'), array(
-        'label' => 'Будинки пакети', // определяется параметром $labels->name
-        'labels' => array(
-            'name' => 'Будинки пакети',
-            'singular_name' => 'Будинки пакети',
-            'search_items' => 'Шукати Будинки пакети',
-            'all_items' => 'Всі Будинки пакети',
-            'parent_item' => 'Батьківська Будинки пакети',
-            'parent_item_colon' => 'Батьківська Будинки пакети:',
-            'edit_item' => 'Редагувати Будинки пакети',
-            'update_item' => 'Оновити Будинки пакети',
-            'add_new_item' => 'Додати Будинки пакети',
-            'new_item_name' => 'Нова Будинки пакети',
-            'menu_name' => 'Розділ Будинки пакети',
-        ),
-        'description' => 'Будинки пакети', // описание таксономии
-        'public' => true,
-        'show_in_nav_menus' => false, // равен аргументу public
-        'show_ui' => true, // равен аргументу public
-        'show_tagcloud' => false, // равен аргументу show_ui
-        'hierarchical' => true,
-        'rewrite' => array('slug' => 'packages_home', 'hierarchical' => false, 'with_front' => false, 'feed' => false),
-        'show_admin_column' => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
-    ));
-
-    register_taxonomy('packages_home', array('service-pack'), array(
-        'label' => 'Будинки пакети', // определяется параметром $labels->name
-        'labels' => array(
-            'name' => 'Будинки пакети',
-            'singular_name' => 'Будинки пакети',
-            'search_items' => 'Шукати Будинки пакети',
-            'all_items' => 'Всі Будинки пакети',
-            'parent_item' => 'Батьківська Будинки пакети',
-            'parent_item_colon' => 'Батьківська Будинки пакети:',
-            'edit_item' => 'Редагувати Будинки пакети',
-            'update_item' => 'Оновити Будинки пакети',
-            'add_new_item' => 'Додати Будинки пакети',
-            'new_item_name' => 'Нова Будинки пакети',
-            'menu_name' => 'Розділ Будинки пакети',
-        ),
-        'description' => 'Будинки пакети', // описание таксономии
-        'public' => true,
-        'show_in_nav_menus' => false, // равен аргументу public
-        'show_ui' => true, // равен аргументу public
-        'show_tagcloud' => false, // равен аргументу show_ui
-        'hierarchical' => true,
-        'rewrite' => array('slug' => 'packages_home', 'hierarchical' => false, 'with_front' => false, 'feed' => false),
-        'show_admin_column' => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
-    ));
-
+    // houses
     register_taxonomy('packages_home', array('service-pack'), array(
         'label' => 'Будинки пакети', // определяется параметром $labels->name
         'labels' => array(
@@ -454,50 +406,107 @@ function create_post_type()
 
 add_action('init', 'create_post_type');
 
-add_action('wp_ajax_post_filter', 'post_filter_func');
-add_action('wp_ajax_nopriv_post_filter', 'post_filter_func');
+
+add_action('wp_ajax_packages_toggle', 'packages_toggle_func');
+add_action('wp_ajax_nopriv_packages_toggle', 'packages_toggle_func');
 
 // ajax function
-function post_filter_func()
+function packages_toggle_func()
 {
 
     if (isset($_REQUEST)) {
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
-            $post_id = (isset($_REQUEST['postId'])) ? (int)$_REQUEST['postId'] : 0;
+            $taxonomy = (isset($_REQUEST['tax'])) ? (string)$_REQUEST['tax'] : 0;
 
-            if ($post_id === 0) {
+            if ($taxonomy === 0) {
                 echo '';
             } else {
                 $args = [
-                    'post_type' => 'contacts',
-                    'post__in' => [$post_id],
-                    'post_status' => 'publish'
+                    'taxonomy' => $taxonomy,
+                    'orderby' => 'term_id',
+                    'order' => 'ASC'
                 ];
 
-                $query = new WP_Query($args);
+                $terms = get_terms($args);
 
-                if ($query->have_posts()) {
-                    while ($query->have_posts()) {
-                        $query->the_post();
-                        $contacts = get_field('add_contact');
+                $flats_arg = [
+                    'post_type' => 'service-pack',
+                    'order' => 'ASC',
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'tax_query' => [
+                        [
+                            'taxonomy' => $taxonomy,
+                            'field' => 'id',
+                            'terms' => '$tax_id'
+                        ]
+                    ]
+                ];
 
-                        foreach ($contacts as $contact) { ?>
-                            <div class="managers_result_row">
-                                <h4 class="managers_result_name text_red"><?php echo $contact['k_name']; ?></h4>
-                                <p class="managers_result_phone text_red">tel. <a class="text_red"
-                                                                                  href="tel:<?php echo phone_format($contact['k_phone']); ?>"><?php echo $contact['k_phone']; ?></a>
-                                </p>
-                                <p class="managers_result_email text_red">e-mail. <a class="text_red"
-                                                                                     href="mailto:<?php echo $contact['k_email']; ?>"><?php echo $contact['k_email']; ?></a>
-                                </p>
+                $flats = new WP_Query($flats_arg);
+                $count = 0;
+
+                foreach ($terms as $term) :
+                    $count++;
+                    $class = ($count === 2) ? ' cur' : ''; ?>
+
+                    <div class="packages_col">
+                        <div class="packages_item<?php echo $class; ?>">
+                            <div class="packages_item_header">
+                                <div class="packages_item_icon">
+                                    <?php include 'templates/' . $taxonomy . '/package-icon' . $count . '.php'; ?>
+                                    <h3><?php echo $term->name; ?></h3>
+                                </div>
                             </div>
-                        <?php }
-                    }
-                }
 
-                wp_reset_postdata();
+                            <div class="packages_item_content">
+                                <div class="packages_item_price">
+                                    <span><?php esc_html_e('від', 'home'); ?></span>
+                                    <b><?php echo get_field('fl_price', $term->taxonomy . '_' . $term->term_id); ?></b>
+                                    <span><?php esc_html_e('грн', 'home'); ?></span>
+                                </div>
+                                <?php
+                                $posts_args = [
+                                    'post_type' => 'service-pack',
+                                    'order' => 'ASC',
+                                    'post_status' => 'publish',
+                                    'posts_per_page' => 7,
+                                    'tax_query' => [
+                                        [
+                                            'taxonomy' => $term->taxonomy,
+                                            'field' => 'id',
+                                            'terms' => $term->term_id
+                                        ]
+                                    ]
+                                ];
 
+                                $posts = new WP_Query($posts_args);
+                                ?>
+                                <ul class="packages_item_services">
+                                    <?
+                                    if ($posts->have_posts()) :
+                                        while ($posts->have_posts()) :
+                                            $posts->the_post();
+                                            ?>
+                                            <li>
+                                                <span><i class="fas fa-check-circle"></i> <?php the_title(); ?> </span>
+                                            </li>
+                                        <?php
+                                        endwhile;
+                                    endif;
+                                    wp_reset_postdata();
+                                    ?>
+                                </ul>
+                            </div>
+                            <div class="packages_item_footer">
+                                <a href="<?php // echo $min['pk_min_link']
+                                ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                            </div>
+                        </div>
+                    </div>
 
+                <?php
+                endforeach;
             }
         }
     }
@@ -600,31 +609,34 @@ function theme_pagination($pages = '')
 }
 
 add_action('add_meta_boxes', 'myplugin_add_custom_box');
-function myplugin_add_custom_box(){
-    $screens = array( 'service-pack' );
-    add_meta_box( 'myplugin_sectionid', 'Ціна', 'myplugin_meta_box_callback', $screens, 'side' );
+function myplugin_add_custom_box()
+{
+    $screens = array('service-pack');
+    add_meta_box('myplugin_sectionid', 'Ціна', 'myplugin_meta_box_callback', $screens, 'side');
 }
 
 // HTML код блока
-function myplugin_meta_box_callback( $post, $meta ){
+function myplugin_meta_box_callback($post, $meta)
+{
     $screens = $meta['args'];
 
     // Используем nonce для верификации
 //    wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 
     // значение поля
-    $value = get_post_meta( $post->ID, 'my_meta_key', 1 );
+    $value = get_post_meta($post->ID, 'my_meta_key', 1);
 
     // Поля формы для введения данных
-    echo '<label for="services_price">' . __("Ціна послуги", 'services' ) . '</label> ';
-    echo '<input type="number" id="services_price" name="services_price" value="'. $value .'" />';
+    echo '<label for="services_price">' . __("Ціна послуги", 'services') . '</label> ';
+    echo '<input type="number" id="services_price" name="services_price" value="' . $value . '" />';
 }
 
 ## Сохраняем данные, когда пост сохраняется
-add_action( 'save_post', 'myplugin_save_postdata' );
-function myplugin_save_postdata( $post_id ) {
+add_action('save_post', 'myplugin_save_postdata');
+function myplugin_save_postdata($post_id)
+{
     // Убедимся что поле установлено.
-    if ( ! isset( $_POST['services_price'] ) )
+    if (!isset($_POST['services_price']))
         return;
 
     // проверяем nonce нашей страницы, потому что save_post может быть вызван с другого места.
@@ -632,17 +644,17 @@ function myplugin_save_postdata( $post_id ) {
 //        return;
 
     // если это автосохранение ничего не делаем
-    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
         return;
 
     // проверяем права юзера
-    if ( ! current_user_can( 'edit_post', $post_id ) )
+    if (!current_user_can('edit_post', $post_id))
         return;
 
     // Все ОК. Теперь, нужно найти и сохранить данные
     // Очищаем значение поля input.
-    $my_data = sanitize_text_field( $_POST['services_price'] );
+    $my_data = sanitize_text_field($_POST['services_price']);
 
     // Обновляем данные в базе данных.
-    update_post_meta( $post_id, 'my_meta_key', $my_data );
+    update_post_meta($post_id, 'my_meta_key', $my_data);
 }

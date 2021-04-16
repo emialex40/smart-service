@@ -135,18 +135,18 @@ jQuery(document).ready(function ($) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
     });
 
-    // if ( $(window).width() < 768 ) {
-    //     $('.packages_row').slick({
-    //         slidesToShow: 1,
-    //         slidesToScroll: 1,
-    //         autoplay: false,
-    //         autoplaySpeed: 5000,
-    //         arrows: false,
-    //         nextArrow: '<span class="prev"></span>',
-    //         prevArrow: '<span class="next"></span>',
-    //         dots: true
-    //     })
-    // }
+    if ( $(window).width() < 992 ) {
+        $('.packages_row').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            arrows: false,
+            nextArrow: '<span class="prev"></span>',
+            prevArrow: '<span class="next"></span>',
+            dots: true
+        })
+    }
 
     $('.packages_item').hover(function () {
         $(this).addClass('cur')
@@ -160,32 +160,21 @@ jQuery(document).ready(function ($) {
     $('.packages_btn').on('click', function (e) {
         e.preventDefault();
 
-        $(this).addClass('active');
-        $(this).parent().siblings().find('.packages_btn').removeClass('active')
+        let tax = $(this).data();
+        tax = tax.tax
+        data = {action: 'packages_toggle', 'tax': tax};
 
-        let post = $(this).attr('href');
-        $('.packages_row').not(post).fadeOut(500).css('display', 'none')
-        $(post).fadeIn(800).css('display', 'flex');
+        $.ajax({
+            url: ajax_web_url,
+            data: data,
+            type: 'post',
+            success: function (response) {
+                $('#packages_row').html(response);
+            },
+        });
 
 
     })
-
-    // const curText = $('.language-chooser').find('.active').children('a').text()
-    //
-    // $(".language-chooser").hover(function () {
-    //     let lang = $(this).find('.active').siblings().children('a').text();
-    //     $(this).find('.active').children('a').text(lang).fadeIn(300)
-    // }, function () {
-    //     $(this).find('.active').children('a').text(curText).fadeIn(300)
-    // })
-
-    // $(".language-chooser")
-    //     .find(".active")
-    //     .click(function (e) {
-    //         e.preventDefault();
-    //         let href = $(this).siblings().children().attr("href");
-    //         location.href = href;
-    //     });
 
     let curLang = $('#lang_switcher').find('.active').children('a').text()
     $('.lang_current').append(curLang)
