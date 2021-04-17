@@ -1,0 +1,10 @@
+.service_single {
+  padding: 130px 0;
+  &_image {
+    width: 100%;
+    height: auto;
+  }
+  &_text {
+    margin-top: 70px;
+  }
+}

@@ -41,7 +41,7 @@ $query = new WP_Query($args);
                                 <div class="post-gallery-item">
                                     <a data-fancybox="gallery<?php echo $id; ?>" href="<?php echo $gallery['url']; ?>">
                                         <img width="350" height="233"
-                                             src="<?php echo $gallery['sizes']['gallery-thumb']; ?>" alt="">
+                                             src="<?php echo $gallery['sizes']['gallery-thumb']; ?>" alt="<?php the_title(); ?>">
                                     </a>
                                 </div>
                             <?php endforeach; ?>

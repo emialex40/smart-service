@@ -126,6 +126,14 @@ $aut_alt = ($aut_img['alt'] !== "") ? $aut_img['alt'] : get_field('hm_bs_writes_
 <?php if ($packeges) : ?>
     <section id="packages" class="packages">
         <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="packages_uniq">
+                        <h2 class="text-center packages_uniq_title"><?php the_field('packs_sttitle'); ?></h2>
+                        <p class="text-center packages_uniq_text"><?php the_field('packs_st_text'); ?></p>
+                    </div>
+                </div>
+            </div>
             <div class="row packages_btn_row">
                 <?php
                 $flats_tax = wp_count_terms([
