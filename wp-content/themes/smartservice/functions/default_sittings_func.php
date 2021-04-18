@@ -103,3 +103,6 @@ function get_phone()
     }
     return;
 }
+
+//$cat_description = wp_strip_all_tags( $category->category_description );
+//echo mb_substr( $cat_description, 0, 50 );
