@@ -1,0 +1,118 @@
+.calc {
+  padding: 130px 0;
+  &_content {
+    padding-top: 60px;
+    &_titles {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 34px;
+      strong {
+        font-size: 16px;
+        font-weight: 600;
+        color: $black-light;
+      }
+    }
+    &_item {
+      border-bottom: 1px solid $grey-light;
+      &_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        height: 65px;
+        span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: $blue;
+          font-size: 17px;
+          font-weight: 600;
+          text-align: center;
+          line-height: 23px;
+          color: $white;
+        }
+      }
+      &_left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .angle-bottom {
+          width: 21px;
+          height: 21px;
+          position: relative;
+          transition: .4s ease-in-out;
+          &.rotate {
+            transform: rotate(180deg);
+          }
+          &:before {
+            content: '';
+            width: 21px;
+            height: 21px;
+            background: url('../img/angle-bottom.svg') no-repeat center center;
+            position: absolute;
+            top: 2px;
+            left: 0;
+          }
+        }
+        h5 {
+          padding-left: 15px;
+          font-weight: 500;
+          font-size: 16px;
+          color: $black-light;
+        }
+      }
+      &_desc {
+        padding: 20px 20px 20px 35px;
+      }
+    }
+  }
+  &_check {
+    padding: 42px 20px 40px;
+    background: #fdfdff;
+    width: 100%;
+    height: auto;
+    p {
+      font-size: 20px;
+      font-weight: 900;
+      color: $black-light;
+      span {
+        font-size: 20px;
+        font-weight: 900;
+        color: $black-light;
+        padding-left: 10px;
+      }
+      b {
+        font-size: 50px;
+      }
+    }
+    &_big {
+      font-size: 80px !important;
+    }
+    &_line {
+      width: 100%;
+      height: 4px;
+      background: url(../img/Line.svg) no-repeat center center;
+      background-size: cover;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+    &_btn {
+      width: 100%;
+      max-width: 276px;
+      height: 44px;
+      font-size: 14px;
+      line-height: 44px;
+      letter-spacing: 1px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 10px;
+    }
+    &_padd {
+      padding: 10px 0;
+    }
+  }
+}

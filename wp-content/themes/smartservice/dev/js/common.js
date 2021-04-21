@@ -229,21 +229,94 @@ jQuery(document).ready(function ($) {
         })
     }
 
-    // let dig1 = $('.num1').data('num');
-    // let dig2 = $('.num2').data('num');
+    $('.js-calc').on('click', '.js-calc-toggle', function () {
+        if($(this).hasClass('open')) {
+            $(this).removeClass('open').siblings('.calc_content_item_desc').slideUp()
+            $(this).find('i').removeClass('rotate')
+        } else {
+            $(this).addClass('open').siblings('.calc_content_item_desc').slideDown();
+            $(this).find('i').addClass('rotate');
+            $(this).closest('.calc_content_item')
+                .siblings().find('.js-calc-toggle')
+                .removeClass('open')
+                .siblings('.calc_content_item_desc')
+                .slideUp()
+            $(this).closest('.calc_content_item')
+                .siblings().find('i').removeClass('rotate')
+        }
 
-    // $('.num1').numScroll({
-    //     number: dig1
-    // })
-    // $('.num2').numScroll({
-    //     number: dig2
-    // })
+    })
 
+    function togglePacks(el) {
+
+        let slug = $(el).data('hash');
+        let catId = $(el).data('cat');
+        let field = 'fl';
+        let taxonomy = 'packages_flats';
+        if (pathname === '/calc-houses/') {
+            field = 'hm';
+            taxonomy = 'packages_home';
+        }
+
+        console.log(pathname)
+        window.location.hash = slug;
+        slug = slug.replace('#', '')
+        $(el).addClass('activate').parent().siblings().find('.js-btn').removeClass('activate');
+
+        const calc = $('.js-calc')
+        $.each(calc, function (index, value) {
+            let item = $(this), itemData = item.data('slug')
+
+            if (itemData === slug) {
+                $(item).fadeIn()
+            } else {
+                $(item).fadeOut()
+            }
+
+            let data = {action: 'packages_result', 'catID': catId , field: field, taxonomy: taxonomy};
+
+            $.ajax({
+                url: ajax_web_url,
+                data: data,
+                type: 'post',
+                success: function (response) {
+                    $('.calc_check').html(response);
+                },
+            });
+        })
+
+        return false;
+    }
+
+    $('.js-btn').on('click', function(e) {
+        e.preventDefault();
+        togglePacks(this)
+    })
+
+    if (pathname === '/flats-calc/') {
+        let hash = window.location.hash
+        let btnHash = $('.js-btn');
+        $.each(btnHash, function (index, value) {
+            let item = $(this).data('hash')
+            if (hash === item)
+            $(this).trigger('click');
+        })
+    }
+
+    if (pathname === '/calc-houses/') {
+        let hash = window.location.hash
+        let btnHash = $('.js-btn');
+        $.each(btnHash, function (index, value) {
+            let item = $(this).data('hash')
+            if (hash === item)
+                $(this).trigger('click');
+        })
+    }
 
     // anchor code
     // var $page = $('html, body');
-    // $('a[href*="#"]').click(function(e) {
-    //     e.preventDefault();
+    // $('a[href*="#"]').click(function() {
+    //
     //     $page.animate({
     //         scrollTop: $($.attr(this, 'href')).offset().top
     //     }, 1000);

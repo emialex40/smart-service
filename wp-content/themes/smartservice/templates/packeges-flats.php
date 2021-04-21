@@ -80,8 +80,7 @@
                     </ul>
                 </div>
                 <div class="packages_item_footer">
-                    <a href="<?php // echo $min['pk_min_link']
-                    ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                    <a href="<?php echo get_home_url() . '/flats-calc/#' . $term->slug; ?>"><?php the_field('detalnishe', 'option'); ?></a>
                 </div>
             </div>
         </div>

@@ -27,3 +27,5 @@ require $path . 'functions/packages_toggle_func.php';
 require_once $path . 'functions/get_hero_func.php';
 
 require_once $path . 'functions/pagination_func.php';
+
+require_once $path . 'functions/packages_result_ajax_func.php';

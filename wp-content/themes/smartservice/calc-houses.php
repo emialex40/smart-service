@@ -1,6 +1,6 @@
 <?php
 /**
- *  Template Name: Квартиры калькулятор
+ *  Template Name: Будинки калькулятор
  */
 
 get_header();
@@ -15,20 +15,20 @@ get_header();
                 <div class="col-8">
                     <div class="calc_wrapper">
                         <?php
-                        $taxonomy = 'packages_flats';
+                        $taxonomy = 'packages_home';
                         $tax_args = [
                             'taxonomy' => $taxonomy,
                             'orderby' => 'id',
                             'hide_empty' => false,
                             'update_term_meta_cache' => true,
                         ];
-                        $flats_terms = get_terms($tax_args);
+                        $houses_terms = get_terms($tax_args);
                         ?>
 <!--                      TODO:  calc buttons-->
                         <div class="calc_buttons">
                             <?
                             $count = 0;
-                            foreach ($flats_terms as $term) :
+                            foreach ($houses_terms as $term) :
                                 $count++;
                                 $active = ($count === 1) ? ' activate' : '';
 
@@ -55,7 +55,7 @@ get_header();
                             </div>
                             <!-- TODO: start base -->
                             <?php
-                            $slug_min = $flats_terms[0]->slug;
+                            $slug_min = $houses_terms[0]->slug;
 
                             $args_min = [
                                 'post_type' => 'service-pack',
@@ -105,7 +105,7 @@ get_header();
 
 <!--                           TODO: start optimal -->
                             <?php
-                            $slug_opt = $flats_terms[1]->slug;
+                            $slug_opt = $houses_terms[1]->slug;
 
                             $args_opt = [
                                 'post_type' => 'service-pack',
@@ -155,7 +155,7 @@ get_header();
 
 <!--                         TODO:   start premium -->
                             <?php
-                            $slug_max = $flats_terms[2]->slug;
+                            $slug_max = $houses_terms[2]->slug;
 
                             $args_max = [
                                 'post_type' => 'service-pack',
@@ -211,11 +211,11 @@ get_header();
                 <div class="col-4">
                     <div class="calc_check">
                         <?
-                        $res_time = get_field('fl_time', $taxonomy . '_' . $flats_terms[0]->term_id);
-                        $res_year = get_field('fl_price', $taxonomy . '_' . $flats_terms[0]->term_id);
-                        $res_month = get_field('fl_price_month', $taxonomy . '_' . $flats_terms[0]->term_id);
+                        $res_time = get_field('hm_time', $taxonomy . '_' . $houses_terms[0]->term_id);
+                        $res_year = get_field('hm_price', $taxonomy . '_' . $houses_terms[0]->term_id);
+                        $res_month = get_field('hm_price_month', $taxonomy . '_' . $houses_terms[0]->term_id);
 
-                        require 'templates/packages-result.php';
+                        require 'templates/packages-result-houses.php';
                         ?>
                     </div>
                 </div>

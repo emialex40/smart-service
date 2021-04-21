@@ -55,7 +55,7 @@ function packages_toggle_func()
                             <div class="packages_item_content">
                                 <div class="packages_item_price">
                                     <span><?php esc_html_e('від', 'home'); ?></span>
-                                    <b><?php echo get_field('fl_price', $term->taxonomy . '_' . $term->term_id); ?></b>
+                                    <b><?php echo get_field('hm_price', $term->taxonomy . '_' . $term->term_id); ?></b>
                                     <span><?php esc_html_e('грн', 'home'); ?></span>
                                 </div>
                                 <?php
@@ -92,8 +92,7 @@ function packages_toggle_func()
                                 </ul>
                             </div>
                             <div class="packages_item_footer">
-                                <a href="<?php // echo $min['pk_min_link']
-                                ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                                <a href="<?php echo get_home_url() . '/calc-houses/#' . $term->slug; ?>"><?php the_field('detalnishe', 'option'); ?></a>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,33 @@
+.calc_buttons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &_col {
+    width: calc(100% / 4);
+  }
+  &_btn {
+    display: block;
+    width: 100%;
+    height: 44px;
+    text-transform: uppercase;
+    font-size: 17px;
+    line-height: 44px;
+    background: transparent;
+    color: $blue;
+    &:hover {
+      background: $yellow;
+    }
+    &.activate {
+      background: $yellow;
+      color: $dark;
+    }
+    &_indi {
+      background: $blue;
+      color: $white;
+      &:hover {
+        background: $blue-light;
+      }
+    }
+  }
+}
