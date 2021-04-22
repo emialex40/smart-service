@@ -258,7 +258,6 @@ jQuery(document).ready(function ($) {
             taxonomy = 'packages_home';
         }
 
-        console.log(pathname)
         window.location.hash = slug;
         slug = slug.replace('#', '')
         $(el).addClass('activate').parent().siblings().find('.js-btn').removeClass('activate');
@@ -312,6 +311,51 @@ jQuery(document).ready(function ($) {
                 $(this).trigger('click');
         })
     }
+
+    $('.calc_buttons_select').change(function () {
+        let curValue = $(this).val()
+
+        if (curValue != 'indi') {
+            let slug = $(this).children('option:selected').data('hash');
+            let catId = $(this).children('option:selected').data('cat');
+            let field = 'fl';
+            let taxonomy = 'packages_flats';
+            if (pathname === '/calc-houses/') {
+                field = 'hm';
+                taxonomy = 'packages_home';
+            }
+
+            window.location.hash = slug;
+            slug = slug.replace('#', '')
+
+            const calc = $('.js-calc')
+            $.each(calc, function (index, value) {
+                let item = $(this), itemData = item.data('slug')
+
+                if (itemData === slug) {
+                    $(item).fadeIn()
+                } else {
+                    $(item).fadeOut()
+                }
+
+                let data = {action: 'packages_result', 'catID': catId , field: field, taxonomy: taxonomy};
+
+                $.ajax({
+                    url: ajax_web_url,
+                    data: data,
+                    type: 'post',
+                    success: function (response) {
+                        $('.calc_check').html(response);
+                    },
+                });
+            })
+        } else {
+            console.log(curValue)
+            return false;
+        }
+
+
+    })
 
     // anchor code
     // var $page = $('html, body');

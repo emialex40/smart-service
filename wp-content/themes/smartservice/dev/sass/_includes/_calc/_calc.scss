@@ -1,5 +1,8 @@
 .calc {
   padding: 130px 0;
+  @include _respond-to(768) {
+    padding: 60px 0;
+  }
   &_content {
     padding-top: 60px;
     &_titles {

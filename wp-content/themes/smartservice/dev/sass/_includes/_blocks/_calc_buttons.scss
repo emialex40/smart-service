@@ -5,6 +5,9 @@
   justify-content: space-between;
   &_col {
     width: calc(100% / 4);
+    @include _respond-to(768) {
+      display: none;
+    }
   }
   &_btn {
     display: block;
@@ -15,6 +18,9 @@
     line-height: 44px;
     background: transparent;
     color: $blue;
+    @include _respond-to(1199) {
+      font-size: 14px;
+    }
     &:hover {
       background: $yellow;
     }
@@ -29,5 +35,19 @@
         background: $blue-light;
       }
     }
+  }
+  &_mob {
+    display: none;
+    @include _respond-to(768) {
+      display: block;
+    }
+  }
+  &_select {
+    display: block;
+    width: 290px;
+    height: 44px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
   }
 }

@@ -12,7 +12,7 @@ get_header();
     <section class="calc">
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-lg-8 col-12">
                     <div class="calc_wrapper">
                         <?php
                         $taxonomy = 'packages_flats';
@@ -24,7 +24,7 @@ get_header();
                         ];
                         $flats_terms = get_terms($tax_args);
                         ?>
-<!--                      TODO:  calc buttons-->
+                        <!--                      TODO:  calc buttons-->
                         <div class="calc_buttons">
                             <?
                             $count = 0;
@@ -36,9 +36,9 @@ get_header();
 
                                 <div class="calc_buttons_col">
                                     <a href="javascript:;" class="btn calc_buttons_btn<?php echo $active; ?> js-btn"
-                                       data-hash="#<?php echo $term->slug; ?>" data-cat="<?php echo $term->term_id; ?>"><?php
-                                        echo
-                                        $term->name; ?></a>
+                                       data-hash="#<?php echo $term->slug; ?>" data-cat="<?php echo $term->term_id; ?>">
+                                        <?php echo $term->name; ?>
+                                    </a>
                                 </div>
                             <?php endforeach; ?>
                             <div class="calc_buttons_col">
@@ -47,6 +47,23 @@ get_header();
                                     <?php echo get_field('individualnyj', 'option'); ?>
                                 </a>
                             </div>
+                            <!--                            mobile buttons-->
+                            <div class="calc_buttons_mob">
+                                <select name="calc_buttons_select" id="calc_select" class="calc_buttons_select">
+                                    <?
+                                    $count = 0;
+                                    foreach ($flats_terms as $term) :
+                                        $count++;
+                                        $active = ($count === 1) ? ' activate' : '';
+                                        ?>
+                                        <option value="<?php echo $term->term_id; ?>"
+                                                data-hash="#<?php echo $term->slug; ?>" data-cat="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+                                    <?php endforeach; ?>
+                                    <option value="indi"><?php echo get_field('individualnyj', 'option'); ?></option>
+                                </select>
+                            </div>
+                           <!--                mobile buttons end-->
+
                         </div>
                         <div class="calc_content">
                             <div class="calc_content_titles">
@@ -101,9 +118,9 @@ get_header();
                                 </div>
                             <?php endif;
                             wp_reset_postdata(); ?>
-<!--                            base end-->
+                            <!--                            base end-->
 
-<!--                           TODO: start optimal -->
+                            <!--                           TODO: start optimal -->
                             <?php
                             $slug_opt = $flats_terms[1]->slug;
 
@@ -151,9 +168,9 @@ get_header();
                                 </div>
                             <?php endif;
                             wp_reset_postdata(); ?>
-<!--                            optimal end-->
+                            <!--                            optimal end-->
 
-<!--                         TODO:   start premium -->
+                            <!--                         TODO:   start premium -->
                             <?php
                             $slug_max = $flats_terms[2]->slug;
 
@@ -175,11 +192,11 @@ get_header();
                             $query_max = new WP_Query($args_max);
                             ?>
 
-                            <?php if ($query_max ->have_posts()) : ?>
+                            <?php if ($query_max->have_posts()) : ?>
                                 <div data-slug="<?php echo $slug_max; ?>" class="calc_content_wrapper js-calc" style="display: none;">
                                     <?php
-                                    while ( $query_max ->have_posts()) :
-                                        $query_max ->the_post();
+                                    while ($query_max->have_posts()) :
+                                        $query_max->the_post();
                                         ?>
                                         <div class="calc_content_item">
                                             <div class="calc_content_item_title js-calc-toggle">
@@ -201,14 +218,14 @@ get_header();
                                 </div>
                             <?php endif;
                             wp_reset_postdata(); ?>
-<!--                            premium end-->
+                            <!--                            premium end-->
 
                         </div>
                     </div>
                 </div>
 
-<!--               TODO: packages result-->
-                <div class="col-4">
+                <!--               TODO: packages result-->
+                <div class="col-lg-4 col-12">
                     <div class="calc_check">
                         <?
                         $res_time = get_field('fl_time', $taxonomy . '_' . $flats_terms[0]->term_id);

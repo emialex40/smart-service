@@ -12,7 +12,7 @@ get_header();
     <section class="calc">
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-lg-8 col-12">
                     <div class="calc_wrapper">
                         <?php
                         $taxonomy = 'packages_home';
@@ -47,6 +47,23 @@ get_header();
                                     <?php echo get_field('individualnyj', 'option'); ?>
                                 </a>
                             </div>
+
+                            <!--                            mobile buttons-->
+                            <div class="calc_buttons_mob">
+                                <select name="calc_buttons_select" id="calc_select" class="calc_buttons_select">
+                                    <?
+                                    $count = 0;
+                                    foreach ($houses_terms as $term) :
+                                        $count++;
+                                        $active = ($count === 1) ? ' activate' : '';
+                                        ?>
+                                        <option value="<?php echo $term->term_id; ?>"
+                                                data-hash="#<?php echo $term->slug; ?>" data-cat="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+                                    <?php endforeach; ?>
+                                    <option value="indi"><?php echo get_field('individualnyj', 'option'); ?></option>
+                                </select>
+                            </div>
+                            <!--                mobile buttons end-->
                         </div>
                         <div class="calc_content">
                             <div class="calc_content_titles">
@@ -208,7 +225,7 @@ get_header();
                 </div>
 
 <!--               TODO: packages result-->
-                <div class="col-4">
+                <div class="col-lg-4 col-12">
                     <div class="calc_check">
                         <?
                         $res_time = get_field('hm_time', $taxonomy . '_' . $houses_terms[0]->term_id);
