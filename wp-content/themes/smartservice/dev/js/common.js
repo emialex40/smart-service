@@ -353,9 +353,16 @@ jQuery(document).ready(function ($) {
             console.log(curValue)
             return false;
         }
-
-
     })
+
+    $('.js-hover').hover(function () {
+        $(this).find('.team_item_show').slideUp()
+        $(this).find('.team_item_hide').slideDown()
+    },
+        function () {
+            $(this).find('.team_item_show').slideDown()
+            $(this).find('.team_item_hide').slideUp()
+        })
 
     // anchor code
     // var $page = $('html, body');

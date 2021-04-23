@@ -137,10 +137,84 @@ if ($services_list) :
             <div class="row">
                 <div class="col-12 f-packs_button">
                     <a class="btn btn-border btn-padd f-packs_btn" href="<?php the_field('sv_fr_btn_link'); ?>"><?php the_field('sv_fr_btn_text');
-                    ?></a>
+                        ?></a>
                 </div>
             </div>
         </div>
     </section>
     <!--packages ebd-->
+
+    <!--    process beginning -->
+    <section class="process bg-light-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <a href="<?php the_field('sv_pr_video_link'); ?>" data-fancybox class="hero_video">
+                        <b><i class="fas fa-play"></i></b>
+                        <span><?php the_field('sv_pr_video_text'); ?></span>
+                    </a>
+                    <div class="process_title_block">
+                        <h2 class="process_title"><?php the_field('sv_pr_title'); ?></h2>
+                        <div class="process_text">
+                            <?php the_field('sv_pr_text'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        $process = get_field('sv_pr_items');
+
+        if ($process) :
+            ?>
+            <div class="container-big">
+                <ul class="process_list">
+                    <?php
+                    $count = 0;
+
+                    foreach ($process as $item) :
+                        $count++;
+                        ?>
+                        <li class="process_item">
+                            <div class="process_item_wrapper">
+                                <div class="process_item_icon">
+                                    <div class="process_item_icn" style="background-image: url(<?php echo $item['sv_pr_icon']; ?>);"></div>
+                                </div>
+                                <div class="process_item_text">
+                                    <h5 class="process_item_title"><?php echo $count; ?>. <?php echo $item['sv_pr_item_title']; ?></h5>
+                                    <p><?php echo $item['sv_pr_item_text']; ?></p>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <div class="process_buttons">
+                    <a class="btn btn-border btn-padd" href="<?php the_field('sv_pr_bt_link'); ?>"><?php the_field('sv_pr_bt_txt'); ?></a>
+                </div>
+            </div>
+        <?php endif; ?>
+    </section>
+    <!--     process end -->
+
+    <!-- call section beginning -->
+    <section class="call">
+        <div class="call_bg bg_fixed" style="background-image: url(<?php the_field('sv_cl_bg'); ?>);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-12">
+                    <h6 class="call_subtitle text-white wow animatetd fadeInLeft"><?php the_field('sv_cl_subtitle'); ?></h6>
+                    <h2 class="call_header wow animated fadeInLeft"><?php the_field('sv_cl-title'); ?></h2>
+                    <div class="call_button wow animated fadeInUp">
+                        <a class="btn btn-padd call_btn wow animated fadeInUp" href="<?php the_field('sv_cl_link') ?>">
+                            <span><?php the_field('pakety_poslug', 'option'); ?></span>
+                            <i class="fas fa-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- call section end -->
+
 <?php get_footer(); ?>

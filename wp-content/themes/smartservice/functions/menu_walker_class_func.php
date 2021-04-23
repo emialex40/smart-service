@@ -102,7 +102,9 @@ function menulang_setup()
 {
     load_theme_textdomain('themename', get_template_directory() . '/languages');
     register_nav_menus(array('header_menu' => __('Header Menu', 'themename')));
-    register_nav_menus(array('footer_menu' => __('Footer Menu', 'themename')));
+    register_nav_menus(array('footer_menu_left' => __('Footer Menu Left', 'themename')));
+    register_nav_menus(array('footer_menu_center' => __('Footer Menu Center', 'themename')));
+    register_nav_menus(array('footer_menu_roight' => __('Footer Menu Right', 'themename')));
 }
 
 add_action('after_setup_theme', 'menulang_setup');

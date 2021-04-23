@@ -139,6 +139,38 @@ function create_post_type()
         'show_admin_column' => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
     ));
 
+    $post_type_labels = array(
+        'name' => esc_html__('Команда', 'themename'),
+        'singular_name' => esc_html__('Команда', 'themename'),
+        'add_new' => esc_html__('Додати', 'themename'),
+        'add_new_item' => esc_html__('Додати', 'themename'),
+        'edit_item' => esc_html__('Редагувати', 'themename'),
+        'new_item' => esc_html__('Нова', 'themename'),
+        'view_item' => esc_html__('Дивитись', 'themename'),
+        'search_items' => esc_html__('Шукати', 'themename'),
+        'not_found' => esc_html__('Не знайдено', 'themename'),
+        'parent_item_colon' => '',
+    );
+    $description = get_option(esc_html__('Додати члена коанди'));
+    $post_type_args = array(
+        'labels' => apply_filters('inspiry_property_post_type_labels', $post_type_labels),
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'query_var' => true,
+        'has_archive' => true,
+        'capability_type' => 'post',
+        'hierarchical' => true,
+        'menu_icon' => 'dashicons-businessman',
+        'menu_position' => 27,
+        'description' => $description,
+        'supports' => array('title', 'editor','thumbnail'),
+        'rewrite' => array(
+            'slug' => apply_filters('inspiry_property_slug', 'team'),
+        ),
+    );
+    register_post_type('team', $post_type_args);
+
 }
 
 add_action('init', 'create_post_type');

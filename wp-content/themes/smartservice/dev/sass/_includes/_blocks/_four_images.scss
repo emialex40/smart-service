@@ -2,6 +2,9 @@
   display: flex;
   height: 500px;
   box-sizing: border-box;
+  @include _respond-to(992) {
+    flex-direction: column;
+  }
   &_item {
     display: flex;
     align-items: center;
