@@ -1,0 +1,47 @@
+.services_cats {
+  padding: 100px 0;
+  @include _respond-to(768) {
+    padding: 60px 0;
+  }
+  &_posts {
+    @include _respond-to(992) {
+      margin-bottom: 50px;
+    }
+  }
+  &_item {
+    width: 100%;
+    margin-bottom: 19px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      color: $black-light;
+      padding: 22px 40px 22px 15px;
+      box-sizing: border-box;
+      background: $grey_ultra-light;
+      border-radius: 3px;
+      position: relative;
+      transition: .3s ease-in-out;
+      &:hover {
+        background: transparent;
+        color: $blue;
+        &:after {
+          background: url(../img/angle-right-blue.svg) no-repeat center center;
+        }
+      }
+      &:after {
+        content: '';
+        width: 10px;
+        height: 16px;
+        background: url(../img/angle-right.svg) no-repeat center center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+      }
+    }
+  }
+}

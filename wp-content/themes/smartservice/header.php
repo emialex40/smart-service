@@ -47,7 +47,7 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col v-centered flex-center flex-end">
                                 <nav class="header_menu">
                                     <?php 
                                     if (has_nav_menu('header_menu')) {
@@ -62,25 +62,24 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
                                     }
                                 ?>
                                 </nav>
-                            </div>
-                            <div class="col-md-3 col v-centered flex-center space-between header_btn_wrapper">
                                 <div id="lang_switcher">
                                     <div class="lang_switch_wrap">
-                                        <div class="lang_current"></div>
                                         <?php
                                         the_widget('qTranslateXWidget',
                                             array(
                                                 'type'           => 'custom',
-                                                'format'         => '%c',
+                                                'format'         => '%n',
                                                 'hide-title'     => true,
                                                 'widget-css-off' => true
                                             ));
                                         ?>
                                     </div>
-                                    <i class="fas fa-angle-down"></i>
                                 </div>
+
+                            <div class="header_btn_wrapper">
+
                                 <a class="btn header_btn"
-                                    href="<?php the_field('contact_link', 'option'); ?>"><?php esc_html_e( 'Контакти', 'smart' ); ?></a>
+                                    href="<?php the_field('contact_link', 'option'); ?>"><?php the_field( 'contact_text', 'option' ); ?></a>
                                 <div class="header_hamburger">
                                     <div>
                                         <button class="hamburger hamburger--collapse" type="button">

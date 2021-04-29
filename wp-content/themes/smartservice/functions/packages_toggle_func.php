@@ -11,6 +11,7 @@ function packages_toggle_func()
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
             $taxonomy = (isset($_REQUEST['tax'])) ? (string)$_REQUEST['tax'] : 0;
 
+
             if ($taxonomy === 0) {
                 echo '';
             } else {
@@ -19,6 +20,8 @@ function packages_toggle_func()
                     'orderby' => 'term_id',
                     'order' => 'ASC'
                 ];
+
+                $prefix = ($taxonomy === 'packages_home') ? 'hm' : 'fl';
 
                 $terms = get_terms($args);
 
@@ -43,19 +46,23 @@ function packages_toggle_func()
                     $count++;
                     $class = ($count === 2) ? ' cur' : ''; ?>
 
+                    <!--                    --><?php //debug('templates/' . $taxonomy . '/package-icon' . $count . '.php');
+                    ?>
                     <div class="packages_col">
                         <div class="packages_item<?php echo $class; ?>">
                             <div class="packages_item_header">
                                 <div class="packages_item_icon">
-                                    <?php include 'templates/' . $taxonomy . '/package-icon' . $count . '.php'; ?>
-                                    <h3><?php echo $term->name; ?></h3>
+                                    <?php
+                                    load_template(get_template_directory() . '/templates/' . $taxonomy . '/package-icon' . $count . '.php', false);
+                                    ?>
                                 </div>
+                                <h3><?php echo $term->name; ?></h3>
                             </div>
 
                             <div class="packages_item_content">
                                 <div class="packages_item_price">
                                     <span><?php esc_html_e('від', 'home'); ?></span>
-                                    <b><?php echo get_field('hm_price', $term->taxonomy . '_' . $term->term_id); ?></b>
+                                    <b><?php echo get_field($prefix . '_price_month', $term->taxonomy . '_' . $term->term_id); ?></b>
                                     <span><?php esc_html_e('грн', 'home'); ?></span>
                                 </div>
                                 <?php

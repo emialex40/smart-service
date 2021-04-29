@@ -5,7 +5,7 @@
             the_widget('qTranslateXWidget',
                 array(
                     'type'           => 'custom',
-                    'format'         => '%c',
+                    'format'         => '%n',
                     'hide-title'     => true,
                     'widget-css-off' => true
                 ));

@@ -1,0 +1,32 @@
+.custom_packs {
+  padding: 100px 0;
+  &_item {
+    display: flex;
+    flex-direction: row;
+  }
+  &_nav {
+    width: 20px;
+    min-width: 20px;
+    margin-right: 13px;
+    overflow: hidden;
+    &_item {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: $yellow;
+      border-radius: 50%;
+      position: relative;
+      position: relative;
+      &:after {
+        content: '';
+        width: 2px;
+        height: 3000px;
+        position: absolute;
+        background: $yellow;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px;
+      }
+    }
+  }
+}

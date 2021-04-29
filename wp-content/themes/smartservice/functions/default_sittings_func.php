@@ -9,7 +9,7 @@ remove_filter('comment_text_rss', 'wp_staticize_emoji');
 remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 add_filter('tiny_mce_plugins', 'disable_wp_emojis_in_tinymce');
 
-//add_filter('show_admin_bar', '__return_false');
+add_filter('show_admin_bar', '__return_false');
 
 
 add_filter('pll_get_post_types', 'unset_cpt_pll', 10, 2);
@@ -102,6 +102,13 @@ function get_phone()
         return $out;
     }
     return;
+}
+
+function add_template($file) {
+    if ($directory !== '') {
+        $directory = $directory . '/';
+    }
+    return load_template(get_template_directory() . '/templates/custom-packages/' . $file . '.php', false);
 }
 
 //$cat_description = wp_strip_all_tags( $category->category_description );

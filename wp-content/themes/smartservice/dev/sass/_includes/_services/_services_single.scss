@@ -1,8 +1,11 @@
 .service_single {
-  padding: 130px 0;
+  padding: 100px 0;
   &_image {
     width: 100%;
-    height: auto;
+    height: 400px;
+    img {
+      height: 100%;
+    }
   }
   &_text {
     margin-top: 70px;

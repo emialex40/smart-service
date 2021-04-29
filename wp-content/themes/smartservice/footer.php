@@ -13,7 +13,7 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
 <footer class="footer bg_dark">
     <div class="container">
         <div class="row footer_wrapper">
-            <div class="col-lg-3 col-md-12 col-12">
+            <div class="col-lg-3 col-12">
                 <div class="footer_logo">
                     <?php if (!is_front_page()) : ?>
                     <a href="">
@@ -33,7 +33,7 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
                     <a href="<?php the_field('telegram', 'option'); ?>""><i class=" fab fa-telegram-plane"></i></a>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4 col-12">
+            <div class="col-lg-2 col-12">
                 <h6><?php esc_html_e( 'про нас', 'themefooter' ) ?></h6>
                 <nav class=footer_nav>
                     <?php  if (has_nav_menu('footer_menu_left')) {
@@ -49,7 +49,7 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
                     ?>
                 </nav>
             </div>
-            <div class="col-lg-2 col-md-4 col-12">
+            <div class="col-lg-2 col-12">
                 <h6><?php esc_html_e( 'послуги', 'themefooter' ) ?></h6>
                 <nav class=footer_nav>
                     <?php  if (has_nav_menu('footer_menu_center')) {
@@ -65,7 +65,7 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
                     ?>
                 </nav>
             </div>
-            <div class="col-lg-2 col-md-4 col-12">
+            <div class="col-lg-2 col-12">
                 <h6><?php esc_html_e( 'пакети', 'themefooter' ) ?></h6>
                 <nav class=footer_nav>
                     <?php  if (has_nav_menu('footer_menu_center')) {

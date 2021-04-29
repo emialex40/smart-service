@@ -37,8 +37,16 @@
         max-width: 680px;
         position: relative;
         height: 100%;
+        @include _respond-to(1200) {
+            max-width: 50%;
+            margin: 0 auto;
+        }
+        @include _respond-to(992) {
+            max-width: 680px;
+            width: auto;
+        }
         @include _respond-to(768) {
-            max-width: 90%;
+            max-width: 50%;
             margin: 0 auto;
         }
         @include _respond-to(480) {
@@ -48,7 +56,10 @@
             display: flex !important;
         }
         .slick-dots {
-            bottom: -30px;
+            bottom: 0;
+            @include _respond-to(992) {
+                bottom: -30px;
+            }
         }
     }
     &_item {
@@ -57,13 +68,13 @@
         background: $white;
         box-sizing: border-box;
         padding: 48px;
-        @include _respond-to(768) {
+        @include _respond-to(480) {
             max-width: none;
         }
         &_wrapper {
            width: 350px;
            height: inherit !important;
-           @include _respond-to(768) {
+           @include _respond-to(480) {
                width: auto;
            }
         }

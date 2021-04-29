@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
         slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3500,
         arrows: false,
         nextArrow: '<span class="prev"></span>',
         prevArrow: '<span class="next"></span>',
@@ -88,7 +88,7 @@ jQuery(document).ready(function ($) {
         slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3500,
         arrows: true,
         variableWidth: true,
         nextArrow: '<span class="prev"><i class="fas fa-caret-left"></i></span>',
@@ -96,7 +96,7 @@ jQuery(document).ready(function ($) {
         dots: true,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -111,11 +111,11 @@ jQuery(document).ready(function ($) {
                 }
             },
             {
-                breakpoint: 767,
+                breakpoint: 770,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    variableWidth: false,
+                    arrows: false,
                 }
             },
             {
@@ -148,20 +148,34 @@ jQuery(document).ready(function ($) {
         })
     }
 
-    $('.packages_item').hover(function () {
-        $(this).addClass('cur')
-        $(this).parent().siblings().find('.packages_item').removeClass('cur')
-    }, function () {
-        $(this).removeClass('cur');
-        $('.packages_col:nth-child(2n+2)').children('.packages_item').addClass('cur')
-    });
+    // $(document).on('hover', '.packages_item', function () {
+    //     $(this).addClass('cur')
+    //     $(this).parent().siblings().find('.packages_item').removeClass('cur')
+    // }, function () {
+    //     $(this).removeClass('cur');
+    //     $('.packages_col:nth-child(2n+2)').children('.packages_item').addClass('cur')
+    // });
+
+    $('#packages_row').on({
+        mouseenter: function () {
+            $(this).addClass('cur')
+            $(this).parent().siblings().find('.packages_item').removeClass('cur')
+        },
+        mouseleave: function () {
+            $(this).removeClass('cur');
+            $('.packages_col:nth-child(2n+2)').children('.packages_item').addClass('cur')
+        }
+    },'.packages_item');
 
 
     $('.packages_btn').on('click', function (e) {
         e.preventDefault();
+        $(this).addClass('active');
+        $(this).parent().siblings().find('.packages_btn').removeClass('active');
 
         let tax = $(this).data();
         tax = tax.tax
+
         data = {action: 'packages_toggle', 'tax': tax};
 
         $.ajax({
@@ -176,15 +190,12 @@ jQuery(document).ready(function ($) {
 
     })
 
-    let curLang = $('#lang_switcher').find('.active').children('a').text()
-    $('.lang_current').append(curLang)
-
-    $('.lang_switch_wrap').hover(function () {
-        $('.qtranxs_widget').find('.language-chooser-item:not(.active)').slideDown();
-        // $('.lang_current').fadeOut()
-    }, function () {
-        $('.qtranxs_widget').find('.language-chooser-item:not(.active)').slideUp();
-    })
+    // $('.lang_switch_wrap').hover(function () {
+    //     $('.qtranxs_widget').find('.language-chooser-item:not(.active)').slideDown();
+    //     // $('.lang_current').fadeOut()
+    // }, function () {
+    //     $('.qtranxs_widget').find('.language-chooser-item:not(.active)').slideUp();
+    // })
 
     $('.accordion-small_title').on('click', function () {
         if (!$(this).hasClass('open')) {
@@ -364,6 +375,31 @@ jQuery(document).ready(function ($) {
             $(this).find('.team_item_hide').slideUp()
         })
 
+        if ($(window).width() < 993) {
+            $('.team').slick({
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false,
+                dots: true,
+                responsive: [
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            variableWidth: false,
+                            arrows: false,
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            })
+        }
+
     // anchor code
     // var $page = $('html, body');
     // $('a[href*="#"]').click(function() {
@@ -373,6 +409,7 @@ jQuery(document).ready(function ($) {
     //     }, 1000);
     //     return false;
     // });
+
 
 
 })

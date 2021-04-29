@@ -440,6 +440,8 @@ h6, .h6 {
 
 .btn {
   display: inline-block;
+  height: 44px;
+  line-height: 44px;
   background: $blue;
   font-size: 12px;
   font-weight: 600;
@@ -458,14 +460,14 @@ h6, .h6 {
 
 .btn-standart {
   width: 185px;
-  height: 54px;
-  line-height: 54px;
+  height: 44px;
+  line-height: 44px;
   text-align: center;
   letter-spacing: 1px;
 }
 
 .btn-padd {
-  padding: 10px 20px;
+  padding: 0 20px;
 }
 
 .btn-border {
@@ -567,7 +569,7 @@ h6, .h6 {
 
 .text-blue {
   color: $blue;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 18px;
 }
 
@@ -595,7 +597,7 @@ h6, .h6 {
 }
 
 .active {
-  background: $blue-light;
+  background: $blue;
 }
 
 .accordion-small {
@@ -687,7 +689,7 @@ h6, .h6 {
     input, textarea {
       display: inline-block;
       width: 100%;
-      border: 1px solid $grey-light;
+      border: 1px solid $grey-light3;
       box-sizing: border-box;
       color: $font-color;
       padding: 2px 15px;
@@ -819,3 +821,21 @@ h6, .h6 {
   max-width: 1400px;
   margin: 0 auto;
 }
+
+.animated.delay-15s {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s
+}
+
+.animated.delay-25s {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s
+}
+
+.content {
+  img {
+    width: auto;
+    height: auto;
+  }
+}
+

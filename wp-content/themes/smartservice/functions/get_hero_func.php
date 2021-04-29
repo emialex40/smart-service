@@ -3,7 +3,9 @@
 function get_hero($is_class = '', $is_title = '')
 {
     $id = get_the_ID();
-    $background = get_the_post_thumbnail_url($id, 'full');
+    $get_background = get_the_post_thumbnail_url($id, 'full');
+    $default = '/wp-content/uploads/2021/04/single-scaled.jpg';
+    $background = (!empty($get_background)) ? $get_background : $default;
 
     $title = ($is_title !== '') ? $is_title : get_the_title();
 

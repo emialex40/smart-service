@@ -1,5 +1,8 @@
 .boss {
   padding-top: 120px;
+  @include _respond-to(480) {
+    padding-top: 70px;
+  }
   h2 {
       font-size: 29px;
   }
@@ -30,9 +33,16 @@
   }
   &_img_wrap {
     padding-right: 50px;
-    @include _respond-to(768) {
+    @include _respond-to(992) {
       padding-right: 15px;
       margin-bottom: 35px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &_img {
+    @include _respond-to(992) {
+      max-width: 400px;
     }
   }
 }

@@ -147,6 +147,11 @@
           color: $orange;
         }
       }
+      &.current-menu-item {
+        a {
+          color: $blue;
+        }
+      }
     }
   }
 

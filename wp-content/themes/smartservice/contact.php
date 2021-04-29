@@ -28,10 +28,7 @@ get_header();
                                 <?php echo get_phone(); ?>
                                 <?php echo get_email(); ?>
                             </div>
-                            <div class="contacts_row contacts_shedule">
-                                <h6><?php the_field('ct_time_title'); ?></h6>
-                                <p><?php the_field('ct_time'); ?></p>
-                            </div>
+                            <div class="contacts_row">
                             <p class="social info_social">
                                 <a href="<?php the_field('facebook', 'option'); ?>"><i
                                             class="fab fa-facebook-f"></i></a>
@@ -40,6 +37,11 @@ get_header();
                                 <a href="<?php the_field('telegram', 'option'); ?>""><i
                                         class=" fab fa-telegram-plane"></i></a>
                             </p>
+                            </div>
+                            <div class="contacts_row contacts_shedule">
+                                <h6><?php the_field('ct_time_title'); ?></h6>
+                                <p><?php the_field('ct_time'); ?></p>
+                            </div>
                         </div>
                     </div>
 

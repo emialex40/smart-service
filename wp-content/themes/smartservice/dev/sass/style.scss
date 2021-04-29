@@ -48,11 +48,15 @@
 @import "_includes/_services/services_list";
 @import "_includes/_services/services_packs";
 @import "_includes/_services/process";
+@import "_includes/_services/services_cats";
+
+@import "_includes/_custom_packages/custom_packs";
 
 @import "_includes/_contacts/contacts";
 
-@import "_includes/_blog/single_blog";
+
 @import "_includes/_blog/blog_list";
+@import "_includes/_blog/single_blog";
 
 
 @import "_default/footer";

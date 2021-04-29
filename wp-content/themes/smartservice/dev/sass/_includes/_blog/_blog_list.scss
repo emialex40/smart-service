@@ -1,5 +1,8 @@
 .blog {
-  padding: 100px 0;
+  padding: 100px 0 0;
+  @include _respond-to(768) {
+    padding: 60px 0 30px;
+  }
   &_list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));

@@ -23,27 +23,27 @@
         ]
     ];
 
-        $flats = new WP_Query($flats_arg);
-        $count = 0;
+    $flats = new WP_Query($flats_arg);
+    $count = 0;
     ?>
     <?php
     foreach ($terms as $term) :
         $count++;
-        $class= ($count === 2) ? ' cur' : '';
+        $class = ($count === 2) ? ' cur' : '';
 
         ?>
         <div class="packages_col">
             <div class="packages_item<?php echo $class; ?>">
                 <div class="packages_item_header">
                     <div class="packages_item_icon">
-                        <?php include '' . $taxonomy . '/package-icon' . $count . '.php'; ?>
+                        <?php load_template(get_template_directory() . '/templates/' . $taxonomy . '/package-icon' . $count . '.php', false); ?>
                     </div>
                     <h3><?php echo $term->name; ?></h3>
                 </div>
                 <div class="packages_item_content">
                     <div class="packages_item_price">
                         <span><?php esc_html_e('від', 'home'); ?></span>
-                        <b><?php echo get_field('fl_price', $term->taxonomy . '_' . $term->term_id); ?></b>
+                        <b><?php echo get_field('fl_price_month', $term->taxonomy . '_' . $term->term_id); ?></b>
                         <span><?php esc_html_e('грн', 'home'); ?></span>
                     </div>
                     <?php

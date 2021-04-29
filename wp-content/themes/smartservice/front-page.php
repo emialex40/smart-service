@@ -15,12 +15,12 @@ $hero_img = get_the_post_thumbnail_url($id, 'full');
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-8 col-12">
-                <div class="hero_content wow animated fadeInUp">
+                <div class="hero_content wow animated fadeInUp delay-15s">
                     <div class="hero_subtitle"><?php the_field('hm_subtitle'); ?></div>
                     <h1><?php the_field('hm_title'); ?></h1>
                     <p><?php the_field('hm_text'); ?></p>
                 </div>
-                <div class="hero_buttons wow animated fadeInUp delay-1s">
+                <div class="hero_buttons wow animated fadeInUp delay-2s">
                     <a class="btn hero_btn"
                        href="<?php the_field('Перетелефонуйте мені') ?>"><?php the_field('hm_hero_btn_title'); ?></a>
                     <a href="<?php the_field('hm_video_btn_link'); ?>" data-fancybox class="hero_video">
@@ -28,7 +28,7 @@ $hero_img = get_the_post_thumbnail_url($id, 'full');
                         <span><?php the_field('hm_video_btn_title'); ?></span>
                     </a>
                 </div>
-                <div class="hero_info wow animated fadeInDown delay-2s">
+                <div class="hero_info wow animated fadeInDown delay-3s">
                     <div class="hero_shedule">
                         <p><?php the_field('grafyk_roboty', 'option'); ?></p>
                         <span><?php the_field('hm_schedule'); ?></span>
@@ -39,8 +39,8 @@ $hero_img = get_the_post_thumbnail_url($id, 'full');
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-4 col-12 hero_img_wrapper delay-2s">
-                <div class="hero_img wow animated fadeInUp">
+            <div class="col-lg-6 col-md-4 col-12 hero_img_wrapper">
+                <div class="hero_img wow animated fadeInUp delay-15s">
                     <img class="iamge" src="<?php echo $hero_img ?>" alt="img">
                 </div>
             </div>
@@ -62,11 +62,11 @@ $aut_alt = ($aut_img['alt'] !== "") ? $aut_img['alt'] : get_field('hm_bs_writes_
 <section class="boss">
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-12 boss_img_wrap">
+            <div class="col-lg-5 col-12 boss_img_wrap">
                 <img class="boss_img wow animated fadeInUp " src="<?php echo $boss_link; ?>"
                      alt="<?php echo $boss_alt; ?>">
             </div>
-            <div class="col-md-7 col-12 flex-end">
+            <div class="col-lg-7 col-12 flex-end">
                 <h2 class="h2 wow animated fadeInUp"><?php the_field('hm_bs_title'); ?></h2>
                 <div class="boss_text wow animated fadeInUp">
                     <?php the_field('hm_bs_txt'); ?>
@@ -283,7 +283,7 @@ $freedom_img = get_field('fr_img');
             <div class="col-lg-4 col-12">
                 <div class="reviews_header wow animated fadeInUp">
                     <i class="quote"
-                       style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/quote_icon.png);"></i>
+                       style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/quote_icon_128x128.svg);"></i>
                     <h2 class="h2"><?php the_field('rv_title'); ?></h2>
                 </div>
             </div>

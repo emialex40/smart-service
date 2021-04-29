@@ -39,6 +39,9 @@
         @include _respond-to(375) {
             padding: 15% 10%;
         }
+        h5 {
+          min-height: 44px;
+        }
         p {
             padding-top: 10px;
             line-height: 1.4;
