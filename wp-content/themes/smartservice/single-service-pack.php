@@ -8,7 +8,7 @@ get_header();
 $id = get_the_ID();
 ?>
 
-<?php get_hero(); ?>
+<?php get_hero('post-hero'); ?>
 
     <section class="service_single">
         <div class="container">

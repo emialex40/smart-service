@@ -1,4 +1,4 @@
-<?php  
+<?php
 $logo = get_field('site_logo', 'option');
 $logo_thumb = $logo['sizes']['gallery-thumb'];
 ?>
@@ -17,69 +17,69 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
     $logo = get_field('header_logo', 'option');
     ?>
     <meta name='apple-itunes-app' content='app-id=​myAppStoreID​'>
-    <link rel="icon" href="<?php print $favicon; ?>" type="image/x-icon" />
-    <link rel="shortcut icon" href="<?php print $favicon; ?>" type="image/x-icon" />
+    <link rel="icon" href="<?php print $favicon; ?>" type="image/x-icon"/>
+    <link rel="shortcut icon" href="<?php print $favicon; ?>" type="image/x-icon"/>
 
     <?php if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false) : ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
-        integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
-        crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+              integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+              crossorigin="anonymous"/>
     <?php endif; ?>
 </head>
 
 <body <?php body_class(); ?>>
-    <script>
-    </script>
-    <div id="root">
-        <div class="app">
-            <div class="app_main">
-                <header class="header">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-3 v-centered">
-                                <div class="header_logo">
-                                    <?php if (!is_front_page()) : ?>
-                                    <a href="<?php echo home_url('/'); ?>">
-                                        <?php endif; ?>
-                                        <img src="<?php echo $logo_thumb; ?>" alt="<?php echo bloginfo( 'name' ); ?>">
-                                        <?php if (!is_front_page()) : ?>
-                                    </a>
+<script>
+</script>
+<div id="root">
+    <div class="app">
+        <div class="app_main">
+            <header class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 v-centered">
+                            <div class="header_logo">
+                                <?php if (!is_front_page()) : ?>
+                                <a href="<?php echo home_url('/'); ?>">
                                     <?php endif; ?>
+                                    <img src="<?php echo $logo_thumb; ?>" alt="<?php echo bloginfo('name'); ?>">
+                                    <?php if (!is_front_page()) : ?>
+                                </a>
+                            <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="col v-centered flex-center flex-end">
+                            <nav class="header_menu">
+                                <?php
+                                if (has_nav_menu('header_menu')) {
+                                    wp_nav_menu(array(
+                                        'theme_location' => 'header_menu',
+                                        'menu_class' => 'header_menu_links',
+                                        'container' => '',
+                                        'container_class' => '',
+                                        'menu_id' => 'header_menu_links',
+                                        'depth' => 1,
+                                        'walker' => new Main_Submenu_Class()));
+                                }
+                                ?>
+                            </nav>
+                            <div id="lang_switcher">
+                                <div class="lang_switch_wrap">
+                                    <?php
+                                    the_widget('qTranslateXWidget',
+                                        array(
+                                            'type' => 'custom',
+                                            'format' => '%n',
+                                            'hide-title' => true,
+                                            'widget-css-off' => true
+                                        ));
+                                    ?>
                                 </div>
                             </div>
-                            <div class="col v-centered flex-center flex-end">
-                                <nav class="header_menu">
-                                    <?php 
-                                    if (has_nav_menu('header_menu')) {
-                                        wp_nav_menu(array(
-                                            'theme_location' => 'header_menu',
-                                            'menu_class' => 'header_menu_links',
-                                            'container' => '',
-                                            'container_class' => '',
-                                            'menu_id' => 'header_menu_links',
-                                            'depth' => 1,
-                                            'walker' => new Main_Submenu_Class()));
-                                    }
-                                ?>
-                                </nav>
-                                <div id="lang_switcher">
-                                    <div class="lang_switch_wrap">
-                                        <?php
-                                        the_widget('qTranslateXWidget',
-                                            array(
-                                                'type'           => 'custom',
-                                                'format'         => '%n',
-                                                'hide-title'     => true,
-                                                'widget-css-off' => true
-                                            ));
-                                        ?>
-                                    </div>
-                                </div>
 
                             <div class="header_btn_wrapper">
 
                                 <a class="btn header_btn"
-                                    href="<?php the_field('contact_link', 'option'); ?>"><?php the_field( 'contact_text', 'option' ); ?></a>
+                                   href="<?php the_field('contact_link', 'option'); ?>"><?php the_field('contact_text', 'option'); ?></a>
                                 <div class="header_hamburger">
                                     <div>
                                         <button class="hamburger hamburger--collapse" type="button">
@@ -92,5 +92,5 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
                             </div>
                         </div>
                     </div>
-                </header>
-                <main>
+            </header>
+            <main>

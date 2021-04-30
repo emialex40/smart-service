@@ -30,7 +30,6 @@ $template_dir = 'custom-packages';
 
                         <?php
                         foreach ($terms as $term) :
-                            $children = get_term_children($term->term_id, $term->taxonomy);
                             $cat_name = $term->name;
                             ?>
 
@@ -47,58 +46,9 @@ $template_dir = 'custom-packages';
                                             <h4><?php echo $cat_name; ?></h4>
                                         </div>
                                         <div class="custom_packs_data">
-
                                             <?php
                                             $term_id = $term->term_id;
 
-                                            if ($children) : ?>
-                                                <?php
-                                                foreach ($children as $child) :
-                                                    $child_cat = get_term_by('id', $child, $term->taxonomy);
-                                                    $child_id = $child_cat->term_id;
-                                                    $cat_name = $child_cat->name;
-                                                    $term_id = $child_id;
-                                                    ?>
-                                                    <div class="custom_packs_name_child">
-                                                        <h4><?php echo $cat_name; ?></h4>
-                                                    </div>
-                                                    <div class="custom_packs_data_sub">
-                                                        <?php
-
-                                                        $args = [
-                                                            'post_type' => 'service-pack',
-                                                            'order' => 'ASC',
-                                                            'post_status' => 'publish',
-                                                            'posts_per_page' => -1,
-                                                            'tax_query' => [
-                                                                [
-                                                                    'taxonomy' => $term->taxonomy,
-                                                                    'field' => 'id',
-                                                                    'terms' => $term_id,
-                                                                    'include_children' => false
-                                                                ]
-                                                            ]
-                                                        ];
-
-                                                        $query = new WP_Query($args);
-
-                                                        if ($query->have_posts()) :
-                                                            while ($query->have_posts()) :
-                                                                $query->the_post();
-                                                                ?>
-                                                                <div class="custom_packs_serv_name"><h5><?php the_title(); ?></h5><span
-                                                                            class="angle_icon"></span></div>
-                                                                <div class="custom_packs_serv_text"><?php the_field('tekst_poslug'); ?></div>
-                                                            <?php
-                                                            endwhile;
-                                                        endif;
-                                                        wp_reset_postdata();
-                                                        ?>
-                                                    </div>
-                                                <?php endforeach; ?>
-                                            <?php endif; ?>
-
-                                            <?php
                                             $args2 = [
                                                 'post_type' => 'service-pack',
                                                 'order' => 'ASC',
@@ -109,7 +59,7 @@ $template_dir = 'custom-packages';
                                                         'taxonomy' => $term->taxonomy,
                                                         'field' => 'id',
                                                         'terms' => $term_id,
-                                                        'include_children' => false
+                                                        'include_children' => true
                                                     ]
                                                 ]
                                             ];
