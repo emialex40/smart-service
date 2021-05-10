@@ -400,6 +400,8 @@ jQuery(document).ready(function ($) {
             })
         }
 
+        $('.custom_packs_select select, .custom_packs_check input').styler();
+
     // anchor code
     // var $page = $('html, body');
     // $('a[href*="#"]').click(function() {

@@ -1,6 +1,10 @@
 .custom_packs {
   padding: 100px 0;
+  &_wrapper {
+    width: 100%;
+  }
   &_item {
+    width: 100%;
     display: flex;
     flex-direction: row;
   }
@@ -28,5 +32,84 @@
         top: 20px;
       }
     }
+  }
+  &_buttons {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    margin-bottom: 58px;
+  }
+  &_btn {
+    display: block;
+    width: 186px;
+    height: 44px;
+    font-weight: 600;
+    font-size: 14px;
+    color: $blue;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 4px;
+    border: 1px solid $white;
+    transition: .3s ease-in-out;
+    &.now {
+      background: $yellow;
+      color: $black-light;
+      border: 1px solid $yellow;
+    }
+    &:hover {
+      border: 1px solid $yellow;
+      color: $black-light;
+    }
+  }
+  &_txt {
+    font-size: 18px;
+    font-weight: 400;
+    color: $black-light;
+    padding-bottom: 28px;
+  }
+  &_headers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid $grey-light;
+    font-size: 16px;
+    color: $grey-light;
+    height: 34px;
+    align-items: center;
+    span {
+      line-height: 19px;
+    }
+  }
+  &_data {
+    padding-top: 20px;
+  }
+  &_serv_name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    h5 {
+      font-size: 16px;
+      font-weight: 300;
+      color: $grey-light;
+      padding-left: 10px;
+      line-height: 30px;
+    }
+  }
+  &_serv_col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &_check {
+    margin-left: 15px;
+  }
+  &_serv_text {
+    font-size: 15px;
+    font-weight: 300;
+    color: $grey-light;
+    padding: 10px 30px 30px 20px;
   }
 }

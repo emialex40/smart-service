@@ -55,6 +55,7 @@ gulp.task('scripts', function() {
 		'./wp-content/themes/'+ themename +'/dev/js/libs/slick.min.js', // Connecting my scripts
 		'./wp-content/themes/'+ themename +'/dev/js/libs/jquery.numscroll.js', // Connecting my scripts
 		'./wp-content/themes/'+ themename +'/dev/js/libs/wow.min.js', // Connecting my scripts
+		'./wp-content/themes/'+ themename +'/dev/js/libs/jquery.formstyler.min.js', // Connecting my scripts
 		'./wp-content/themes/'+ themename +'/dev/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
