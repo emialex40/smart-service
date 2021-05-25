@@ -28,4 +28,8 @@ require_once $path . 'functions/get_hero_func.php';
 
 require_once $path . 'functions/pagination_func.php';
 
+require_once $path . 'functions/breadcrumbs_func.php';
+
 require_once $path . 'functions/packages_result_ajax_func.php';
+
+require_once $path . 'functions/custom_packs_ajax_func.php';

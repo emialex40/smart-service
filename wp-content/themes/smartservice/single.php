@@ -22,7 +22,33 @@ $args = [
 $query = new WP_Query($args);
 ?>
 
-<?php get_hero('post-hero'); ?>
+<?php get_hero('post-hero', '', '', false); ?>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                        <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a class="breadcrumbs__link" href="https://dev2.pineapple.zp.ua/" itemprop="item">
+                                <span itemprop="name"><i class="fas fa-home"></i></span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </span>
+                        <span class="breadcrumbs__separator"> / </span>
+                        <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a class="breadcrumbs__link" href="<?php echo get_site_url(); ?>/blog/" itemprop="item">
+                                <span itemprop="name"><?php the_field('blog', 'option') ?></span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </span>
+                        <span class="breadcrumbs__separator"> / </span>
+                        <span class="breadcrumbs__current"><?php the_title(); ?></span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="post">
         <div class="container">
@@ -93,7 +119,8 @@ $query = new WP_Query($args);
                                 </p>
                             </div>
                             <div>
-                                <a class="post_list-more" href="<?php the_permalink(); ?>"><?php the_field('chytaty_bilshe', 'option'); ?> <i class="fas fa-angle-right"></i></a>
+                                <a class="post_list-more" href="<?php the_permalink(); ?>"><?php the_field('chytaty_bilshe', 'option'); ?> <i
+                                            class="fas fa-angle-right"></i></a>
                             </div>
                         </article>
                     <?php endwhile; ?>

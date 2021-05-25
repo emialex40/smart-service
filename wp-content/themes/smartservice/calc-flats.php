@@ -35,7 +35,7 @@ get_header();
                                 ?>
 
                                 <div class="calc_buttons_col">
-                                    <a href="javascript:;" class="btn calc_buttons_btn<?php echo $active; ?> js-btn"
+                                    <a href="javascript:;" class="btn btn-no-shadow calc_buttons_btn<?php echo $active; ?> js-btn"
                                        data-hash="#<?php echo $term->slug; ?>" data-cat="<?php echo $term->term_id; ?>">
                                         <?php echo $term->name; ?>
                                     </a>
@@ -43,7 +43,7 @@ get_header();
                             <?php endforeach; ?>
                             <div class="calc_buttons_col">
                                 <a href="javascript:;"
-                                   class="btn calc_buttons_btn calc_buttons_btn_indi">
+                                   class="btn btn-no-shadow calc_buttons_btn calc_buttons_btn_indi">
                                     <?php echo get_field('individualnyj', 'option'); ?>
                                 </a>
                             </div>

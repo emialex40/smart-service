@@ -3,6 +3,9 @@
     @include _respond-to(768) {
         padding: 50px 0 6px;
     }
+    @include _respond-to(480) {
+        padding: 0 0 6px;
+    }
     &_wrapper {
         padding: 30px 0 50px;
         h6 {

@@ -1,4 +1,4 @@
-<section class="info">
+<section id="info" class="info">
     <div class="info_bg" style="background-image: url(<?php the_field('i_img') ?>);"></div>
     <div class="container">
         <div class="row">

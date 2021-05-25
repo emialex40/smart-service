@@ -1,10 +1,9 @@
 .team {
-  margin-top: 70px;
-  margin-bottom: 100px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(331px, 1fr));
   grid-gap: 30px;
   padding: 0 15px;
+  margin: 70px 20px 100px;
   @include _respond-to(1049) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
@@ -14,7 +13,7 @@
   &_item {
     overflow: hidden;
     border-radius: 5px;
-    @include _respond-to(992) {
+    @include _respond-to(1120) {
       padding: 0 10px;
     }
     @include _respond-to(480) {

@@ -6,9 +6,61 @@
 get_header();
 
 $id = get_the_ID();
+
+$category = get_the_terms($id, 'services_cats');
+$cat_link = get_category_link($category[0]->term_id);
+$cat_parent = get_term($category[0]->parent);
+$cat_parent_link = get_category_link($cat_parent->term_id);
+
 ?>
 
-<?php get_hero('post-hero'); ?>
+<?php get_hero('post-hero', '', false, false); ?>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                        <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a class="breadcrumbs__link" href="https://dev2.pineapple.zp.ua/" itemprop="item">
+                                <span itemprop="name"><i class="fas fa-home"></i></span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </span>
+                        <span class="breadcrumbs__separator"> / </span>
+
+                        <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a class="breadcrumbs__link" href="<?php echo get_site_url(); ?>/services/" itemprop="item">
+                                <span itemprop="name"><?php the_field('bc_poslugy', 'option') ?></span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </span>
+                        <span class="breadcrumbs__separator"> / </span>
+
+                        <?php if ($cat_parent->name) : ?>
+                            <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a class="breadcrumbs__link" href="<?php echo $cat_parent_link; ?>" itemprop="item">
+                                <span itemprop="name"><?php echo $cat_parent->name; ?></span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </span>
+                            <span class="breadcrumbs__separator"> / </span>
+                        <?php endif; ?>
+
+                        <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a class="breadcrumbs__link" href="<?php echo $cat_link; ?>" itemprop="item">
+                                <span itemprop="name"><?php echo $category[0]->name; ?></span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </span>
+                        <span class="breadcrumbs__separator"> / </span>
+
+                        <span class="breadcrumbs__current"><?php the_title(); ?></span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="service_single">
         <div class="container">

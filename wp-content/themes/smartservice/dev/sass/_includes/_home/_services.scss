@@ -6,6 +6,11 @@
     padding: 45px 0 30px;
     margin: 0 auto;
   }
+  &_flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   &_left {
     max-width: 445px;
     h6 {
@@ -69,5 +74,6 @@
 }
 
 #services .services_slider_wrap .slick-dots {
-  bottom: -30px;
+  bottom: -8px;
+  left: -8px;
 }

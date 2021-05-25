@@ -54,7 +54,7 @@ function create_post_type()
         ),
         'description' => 'Категорії послуг', // описание таксономии
         'public' => true,
-        'show_in_nav_menus' => false, // равен аргументу public
+        'show_in_nav_menus' => true, // равен аргументу public
         'show_ui' => true, // равен аргументу public
         'show_tagcloud' => false, // равен аргументу show_ui
         'hierarchical' => true,
@@ -115,21 +115,21 @@ function create_post_type()
     ));
 
     register_taxonomy('packages_bussiness', array('service-pack'), array(
-        'label' => 'Комирційні пакети', // определяется параметром $labels->name
+        'label' => 'Комерційні пакети', // определяется параметром $labels->name
         'labels' => array(
-            'name' => 'Комирційні пакети',
-            'singular_name' => 'Комирційні пакети',
-            'search_items' => 'Шукати Комирційні пакети',
-            'all_items' => 'Всі Комирційні пакети',
-            'parent_item' => 'Батьківська Комирційні пакети',
-            'parent_item_colon' => 'Батьківська Комирційні пакети:',
-            'edit_item' => 'Редагувати Комирційні пакети',
-            'update_item' => 'Оновити Комирційні пакети',
-            'add_new_item' => 'Додати Комирційні пакети',
-            'new_item_name' => 'Нова Комирційні пакети',
-            'menu_name' => 'Розділ Комирційні пакети',
+            'name' => 'Комерційні пакети',
+            'singular_name' => 'Комерційні пакети',
+            'search_items' => 'Шукати Комерційні пакети',
+            'all_items' => 'Всі Комерційні пакети',
+            'parent_item' => 'Батьківська Комерційні пакети',
+            'parent_item_colon' => 'Батьківська Комерційні пакети:',
+            'edit_item' => 'Редагувати Комерційні пакети',
+            'update_item' => 'Оновити Комерційні пакети',
+            'add_new_item' => 'Додати Комерційні пакети',
+            'new_item_name' => 'Нова Комерційні пакети',
+            'menu_name' => 'Розділ Комерційні пакети',
         ),
-        'description' => 'Комирційні пакети', // описание таксономии
+        'description' => 'Комерційні пакети', // описание таксономии
         'public' => true,
         'show_in_nav_menus' => false, // равен аргументу public
         'show_ui' => true, // равен аргументу public

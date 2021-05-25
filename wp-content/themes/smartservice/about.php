@@ -13,8 +13,8 @@ get_header();
     <div class="container">
         <div class="row cool_wrapper">
             <div class="col-lg-6 col-12">
-                <h6 class="text-blue wow animated fadeInLeft"><?php the_field('ab_subtitle_top'); ?></h6>
-                <h2 class="h2 cool_header wow animated fadeInLeft"><?php the_field('ab_title'); ?></h2>
+                <h6 class="text-blue wow animated fadeInUp"><?php the_field('ab_subtitle_top'); ?></h6>
+                <h2 class="h2 cool_header wow animated fadeInUp"><?php the_field('ab_title'); ?></h2>
                 <span class="cool_subtitle wow animated fadeInUp"><?php the_field('ab_subtitle'); ?></span>
                 <div class="cool_text"><?php the_field('ab_text'); ?></div>
             </div>
@@ -51,7 +51,7 @@ get_header();
                             $count++;
                             ?>
                             <div class="cool_counter_item">
-                        <span class="cool_counter_num num<?= $count; ?> wow"
+                        <span class="cool_counter_num num<?php echo $count; ?> wow"
                               data-num="<?php echo $counter['ab_count_dig']; ?>">0</span>
                                 <strong class="cool_counter_name">
                                     <?php echo $counter['ab_count_name']; ?>
@@ -73,8 +73,8 @@ get_header();
                 <?php include_once 'templates/video-template.php'; ?>
             </div>
             <div class="col-lg-5 col-12 always_wrap">
-                <h2 class="h2 always_header wow animated fadeInRight"><?php the_field('ab_vd_title'); ?></h2>
-                <div class="always_text wow animated fadeInRight">
+                <h2 class="h2 always_header wow animated fadeInUp"><?php the_field('ab_vd_title'); ?></h2>
+                <div class="always_text wow animated fadeInUp">
                     <?php the_field('ab_vd_text'); ?>
                 </div>
                 <?php
@@ -152,8 +152,8 @@ get_header();
         <div class="row">
             <div class="col-md-6 col-12">
                 <div class="time_wrapper">
-                    <h6 class="text-blue wow animated fadeInLeft"><?php the_field('tm_subtitle'); ?></h6>
-                    <h2 class="time_header wow animated fadeInLeft"><?php the_field('tm_title'); ?></h2>
+                    <h6 class="text-blue wow animated fadeInUp"><?php the_field('tm_subtitle'); ?></h6>
+                    <h2 class="time_header wow animated fadeInUp"><?php the_field('tm_title'); ?></h2>
                     <p class="time_text wow animated fadeInUp"><?php the_field('tm_text'); ?></p>
                     <div class="time_button wow animated fadeInUp">
                         <a class="btn btn-padd btn-border"
@@ -219,8 +219,7 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-12">
-                <h6 class="call_subtitle text-white wow animatetd fadeInLeft"><?php the_field('sll_subtitle'); ?></h6>
-                <h2 class="call_header wow animated fadeInLeft"><?php the_field('cll_title'); ?></h2>
+                <h2 class="call_header wow animated fadeInUp"><?php the_field('cll_title'); ?></h2>
                 <div class="call_button wow animated fadeInUp">
                     <a class="btn btn-padd call_btn wow animated fadeInUp" href="<?php the_field('cll_link') ?>">
                         <span><?php the_field('pakety_poslug', 'option'); ?></span>

@@ -39,13 +39,11 @@ if ($services_list) :
                                     </div>
                                     <h3><?php echo $cat->name; ?></h3>
                                 </div>
-                                <div class="services_list_hide">
+                                <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="services_list_hide">
                                     <?php if ($cat->description) : ?>
-                                        <div class="services_list_cat"><?php echo substr($cat->description, 0, 100) . ' ...' ?></div>
+                                        <div class="services_list_cat"><?php echo substr($cat->description, 0,); ?></div>
                                     <?php endif; ?>
-                                    <a class="services_list_btn"
-                                       href="<?php echo esc_url(get_term_link($cat)); ?>"><?php echo get_field('detalnishe', 'option'); ?></a>
-                                </div>
+                                </a>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -135,10 +133,12 @@ if ($services_list) :
                 </div>
             </div>
             <div class="row">
+                <?php if (get_field('sv_fr_btn_link')) : ?>
                 <div class="col-12 f-packs_button">
                     <a class="btn btn-border btn-padd f-packs_btn" href="<?php the_field('sv_fr_btn_link'); ?>"><?php the_field('sv_fr_btn_text');
                         ?></a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -168,7 +168,7 @@ if ($services_list) :
 
         if ($process) :
             ?>
-            <div class="container-big">
+            <div class="container">
                 <ul class="process_list">
                     <?php
                     $count = 0;
@@ -189,9 +189,11 @@ if ($services_list) :
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <div class="process_buttons">
-                    <a class="btn btn-border btn-padd" href="<?php the_field('sv_pr_bt_link'); ?>"><?php the_field('sv_pr_bt_txt'); ?></a>
-                </div>
+                <?php if (get_field('sv_pr_bt_txt')) : ?>
+                    <div class="process_buttons">
+                        <a class="btn btn-border btn-padd" href="<?php the_field('sv_pr_bt_link'); ?>"><?php the_field('sv_pr_bt_txt'); ?></a>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
     </section>
@@ -203,8 +205,8 @@ if ($services_list) :
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-12">
-                    <h6 class="call_subtitle text-white wow animatetd fadeInLeft"><?php the_field('sv_cl_subtitle'); ?></h6>
-                    <h2 class="call_header wow animated fadeInLeft"><?php the_field('sv_cl-title'); ?></h2>
+                    <h6 class="call_subtitle text-white wow animatetd fadeInUp"><?php the_field('sv_cl_subtitle'); ?></h6>
+                    <h2 class="call_header wow animated fadeInUp"><?php the_field('sv_cl-title'); ?></h2>
                     <div class="call_button wow animated fadeInUp">
                         <a class="btn btn-padd call_btn wow animated fadeInUp" href="<?php the_field('sv_cl_link') ?>">
                             <span><?php the_field('pakety_poslug', 'option'); ?></span>

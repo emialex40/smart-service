@@ -42,7 +42,7 @@
                 </div>
                 <div class="packages_item_content">
                     <div class="packages_item_price">
-                        <span><?php esc_html_e('від', 'home'); ?></span>
+                        <span><?php the_field('vid', 'option'); ?></span>
                         <b><?php echo get_field('fl_price_month', $term->taxonomy . '_' . $term->term_id); ?></b>
                         <span><?php esc_html_e('грн', 'home'); ?></span>
                     </div>

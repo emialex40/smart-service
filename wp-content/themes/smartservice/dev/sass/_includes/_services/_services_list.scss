@@ -67,27 +67,31 @@
     border-left: 1px solid $grey-ultra-light;
     padding: 50px;
     box-sizing: border-box;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: absolute;
+    justify-content: center;
     top: 0;
     left: 0;
-    right: 0;
     transition: .4s ease-in-out;
     h3 {
+      display: block;
       font-size: 21px;
       font-weight: 300;
       padding-top: 20px;
       text-align: center;
+      min-height: 66px;
     }
   }
   &_icon {
+    display: block;
     width: 60px;
     height: 60px;
+    margin: 0 auto;
   }
   &_hide {
+    display: block;
     width: 100%;
     height: 100%;
     position: absolute;

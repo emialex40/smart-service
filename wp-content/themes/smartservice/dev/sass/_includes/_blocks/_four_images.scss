@@ -72,16 +72,21 @@
   }
   &_link {
     width: 125px;
-    height: 32px;
+    height: 44px;
     display: block;
     font-size: 12px;
     text-transform: uppercase;
     color: $white;
     background: $blue;
-    line-height: 32px;
+    line-height: 44px;
     border-radius: 5px;
     font-weight: 600;
     letter-spacing: 1px;
     margin: 0 auto;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .3);
+    &:hover {
+      background: $blue-light;
+      color: $white;
+    }
   }
 }

@@ -1,1 +1,0 @@
-<h4><?php echo $cat_name; ?></h4>

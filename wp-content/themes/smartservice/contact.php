@@ -29,7 +29,7 @@ get_header();
                                 <?php echo get_email(); ?>
                             </div>
                             <div class="contacts_row">
-                            <p class="social info_social">
+                            <p class="social">
                                 <a href="<?php the_field('facebook', 'option'); ?>"><i
                                             class="fab fa-facebook-f"></i></a>
                                 <a href="<?php the_field('insta', 'option'); ?>""><i class=" fab fa-instagram"></i></a>

@@ -6,7 +6,7 @@
 ?>
 
 
-<div class="video wow animated fadeInLeft">
+<div class="video wow animated fadeInUp">
     <a href="<?php the_field('video_link'); ?>" data-fancybox class="video_link">
         <img src="<?php echo $img_link; ?>" alt="<?php echo $img_alt; ?>" class="video_img">
         <span class="video_btn"><i class="fas fa-play"></i></span>

@@ -36,8 +36,6 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding-left: calc(50px / 2);
-      padding-right: calc(50px / 2);
       @include _respond-to(992) {
         flex-direction: row;
         align-items: center;
@@ -90,7 +88,7 @@
       width: 99px;
       height: 99px;
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: 79px 79px;
       background-position:  center;
       background-color: $white;
       border-radius: 50%;
@@ -124,9 +122,11 @@
     }
     &_text {
       margin-top: 30px;
+      margin-right: 20px;
       @include _respond-to(992) {
         margin-top: 0;
         margin-left: 30px;
+        margin-right: 0;
       }
       p {
         padding-top: 20px;

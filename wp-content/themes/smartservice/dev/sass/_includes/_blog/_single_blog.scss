@@ -1,7 +1,7 @@
 .post {
   padding: 130px 0;
   &-hero {
-    h1 {
+    h1, .h1 {
       font-size: 26px;
       max-width: 367px;
     }

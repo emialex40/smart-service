@@ -9,18 +9,18 @@
         line-height: 44px;
         margin: 0 auto;
         color: $blue;
-        border: 1px solid $blue;
+        border: 1px solid $blue-light;
         background: transparent;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         box-sizing: border-box;
         &.active {
-            background: $blue;
+            background: $blue-light;
             color: $dark;
         }
         &:hover {
-            background: $blue;
+            background: $blue-light;
             color: $dark;
         }
         @include _respond-to(768) {

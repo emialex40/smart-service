@@ -15,10 +15,10 @@ $hero_img = get_the_post_thumbnail_url($id, 'full');
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-8 col-12">
-                <div class="hero_content wow animated fadeInUp delay-15s">
-                    <div class="hero_subtitle"><?php the_field('hm_subtitle'); ?></div>
-                    <h1><?php the_field('hm_title'); ?></h1>
-                    <p><?php the_field('hm_text'); ?></p>
+                <div class="hero_content">
+                    <div class="hero_subtitle wow animated fadeInUp delay-05s"><?php the_field('hm_subtitle'); ?></div>
+                    <h1 class="wow animated fadeInUp delay-1s"><?php the_field('hm_title'); ?></h1>
+                    <p class=" wow animated fadeInUp delay-15s"><?php the_field('hm_text'); ?></p>
                 </div>
                 <div class="hero_buttons wow animated fadeInUp delay-2s">
                     <a class="btn hero_btn"
@@ -84,7 +84,7 @@ $aut_alt = ($aut_img['alt'] !== "") ? $aut_img['alt'] : get_field('hm_bs_writes_
     <div class="services_wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-12">
+                <div class="col-lg-5 col-12 services_flex">
                     <div class="services_left">
                         <h6 class="text-blue wow animated fadeInUp"><?php the_field('hm_srv_subtitile'); ?></h6>
                         <h2 class="wow animated fadeInUp"><?php the_field('hm_srv_title'); ?></h2>
@@ -144,7 +144,7 @@ $aut_alt = ($aut_img['alt'] !== "") ? $aut_img['alt'] : get_field('hm_bs_writes_
                 if ($flats_tax) :
                     ?>
                     <div class="packages_btn_col wow animated fadeInUp">
-                        <a class="btn packages_btn active"
+                        <a class="btn btn-no-shadow packages_btn active"
                            href="javascript:;" data-tax="packages_flats"><?php the_field('kvartyry', 'option'); ?></a>
                     </div>
                 <?php endif; ?>
@@ -158,7 +158,7 @@ $aut_alt = ($aut_img['alt'] !== "") ? $aut_img['alt'] : get_field('hm_bs_writes_
                 if ($houses_tax) :
                     ?>
                     <div class="packages_btn_col wow animated fadeInUp">
-                        <a class="btn packages_btn" href="javascript:;"
+                        <a class="btn btn-no-shadow packages_btn" href="javascript:;"
                            data-tax="packages_home"><?php the_field('budynky', 'option'); ?></a>
                     </div>
                 <?php endif; ?>
@@ -242,7 +242,7 @@ $freedom_img = get_field('fr_img');
                         </ul>
                     <?php endif; ?>
                     <a class="btn btn-standart freedom_btn wow animated fadeInUp delay-2s"
-                       href="<?php the_field('fr_link'); ?>"><?php the_field('ynteresno', 'option'); ?></a>
+                       href="<?php the_field('wt_link'); ?>"><?php the_field('ynteresno', 'option'); ?></a>
                 </div>
             </div>
         </div>

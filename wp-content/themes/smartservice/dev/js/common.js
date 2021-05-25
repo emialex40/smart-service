@@ -2,6 +2,15 @@ jQuery(document).ready(function ($) {
 
     const $menu = $(".header");
 
+    $('main, footer').mouseup(function (e) {
+        var div = $("#mobile_menu");
+        var humb = $('hamburger')
+        if (!div.is(e.target) && div.has(e.target).length === 0) {
+            $('.mobile_menu').removeClass('active');
+            $('.hamburger').removeClass('is-active');
+        }
+    });
+
     // hamburger 
     $('.hamburger').click(function (e) {
         e.preventDefault();
@@ -20,14 +29,6 @@ jQuery(document).ready(function ($) {
         }
 
     });
-
-    // $(document).mouseup(function (e){ 
-    // 	const $div = $(".mobile_menu");
-    // 	if (!$div.is(e.target) && $div.has(e.target).length === 0) {
-    //             $('.mobile_menu').removeClass('active');
-    //             $('.hamburger').removeClass('is-active');
-    // 	}
-    // });
 
     $(window).scroll(function () {
         if ($(this).scrollTop() > 0) {
@@ -135,7 +136,7 @@ jQuery(document).ready(function ($) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
     });
 
-    if ( $(window).width() < 992 ) {
+    if ($(window).width() < 992) {
         $('.packages_row').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -165,7 +166,7 @@ jQuery(document).ready(function ($) {
             $(this).removeClass('cur');
             $('.packages_col:nth-child(2n+2)').children('.packages_item').addClass('cur')
         }
-    },'.packages_item');
+    }, '.packages_item');
 
 
     $('.packages_btn').on('click', function (e) {
@@ -217,7 +218,7 @@ jQuery(document).ready(function ($) {
 
     let pathname = window.location.pathname;
 
-    if (pathname === '/about/') {
+    if (pathname === '/about/' || pathname === '/ru/about/') {
         const counter = $('#cool_counter');
         let status = true;
 
@@ -241,7 +242,7 @@ jQuery(document).ready(function ($) {
     }
 
     $('.js-calc').on('click', '.js-calc-toggle', function () {
-        if($(this).hasClass('open')) {
+        if ($(this).hasClass('open')) {
             $(this).removeClass('open').siblings('.calc_content_item_desc').slideUp()
             $(this).find('i').removeClass('rotate')
         } else {
@@ -283,7 +284,7 @@ jQuery(document).ready(function ($) {
                 $(item).fadeOut()
             }
 
-            let data = {action: 'packages_result', 'catID': catId , field: field, taxonomy: taxonomy};
+            let data = {action: 'packages_result', 'catID': catId, field: field, taxonomy: taxonomy};
 
             $.ajax({
                 url: ajax_web_url,
@@ -298,7 +299,7 @@ jQuery(document).ready(function ($) {
         return false;
     }
 
-    $('.js-btn').on('click', function(e) {
+    $('.js-btn').on('click', function (e) {
         e.preventDefault();
         togglePacks(this)
     })
@@ -309,7 +310,7 @@ jQuery(document).ready(function ($) {
         $.each(btnHash, function (index, value) {
             let item = $(this).data('hash')
             if (hash === item)
-            $(this).trigger('click');
+                $(this).trigger('click');
         })
     }
 
@@ -349,7 +350,7 @@ jQuery(document).ready(function ($) {
                     $(item).fadeOut()
                 }
 
-                let data = {action: 'packages_result', 'catID': catId , field: field, taxonomy: taxonomy};
+                let data = {action: 'packages_result', 'catID': catId, field: field, taxonomy: taxonomy};
 
                 $.ajax({
                     url: ajax_web_url,
@@ -367,40 +368,40 @@ jQuery(document).ready(function ($) {
     })
 
     $('.js-hover').hover(function () {
-        $(this).find('.team_item_show').slideUp()
-        $(this).find('.team_item_hide').slideDown()
-    },
+            $(this).find('.team_item_show').slideUp()
+            $(this).find('.team_item_hide').slideDown()
+        },
         function () {
             $(this).find('.team_item_show').slideDown()
             $(this).find('.team_item_hide').slideUp()
         })
 
-        if ($(window).width() < 993) {
-            $('.team').slick({
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 5000,
-                arrows: false,
-                dots: true,
-                responsive: [
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            variableWidth: false,
-                            arrows: false,
-                        }
+    if ($(window).width() < 1120) {
+        $('.team').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            arrows: false,
+            dots: true,
+            responsive: [
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        variableWidth: false,
+                        arrows: false,
                     }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            })
-        }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        })
+    }
 
-        $('.custom_packs_select select, .custom_packs_check input').styler();
+    $('.custom_packs_select select, .custom_packs_check input').styler();
 
     // anchor code
     // var $page = $('html, body');
@@ -412,6 +413,95 @@ jQuery(document).ready(function ($) {
     //     return false;
     // });
 
+    // TODO: custom packages scripts beginning
+
+    $(document).on('click', '.custom_packs_btn', function () {
+        if ($(this).hasClass('now'))
+            return;
+        let text = $(this).text()
+        let dataType = $(this).data('type')
+        $(this).addClass('now').siblings().removeClass('now')
+        $('.custom_packs_result_header').find('strong').text(text)
 
 
-})
+    })
+
+    $(document).on('click', '.js-col', function () {
+        if ($(this).hasClass('open')) {
+            $(this).find('.angle_icon').removeClass('rotate');
+            $(this).removeClass('open').parent().siblings('.custom_packs_serv_text').slideUp();
+        } else {
+            $(this).addClass('open');
+            $(this).find('.angle_icon').addClass('rotate')
+            $(this).parent().siblings('.custom_packs_serv_text').slideDown();
+            $(this).closest('.custom_packs_el').siblings().find('.js-col').removeClass('open').find('.angle_icon').removeClass('rotate');
+            $(this).closest('.custom_packs_el').siblings().find('.custom_packs_serv_text').slideUp();
+        }
+    })
+
+    $(document).on('click', '.js-next', function () {
+        $(this).closest('.custom_packs_item').removeClass('p-current')
+        $(this).closest('.custom_packs_item').next().addClass('p-current')
+    })
+
+    $(document).on('click', '.js-prev', function () {
+        $(this).closest('.custom_packs_item').removeClass('p-current')
+        $(this).closest('.custom_packs_item').prev().addClass('p-current')
+    })
+
+    let resultBody = $('.custom_packs_result_body_item')
+
+    let $cookie = $.cookie('calc');
+
+    services = [];
+    let data = JSON.stringify(services)
+    $.cookie('calc', data)
+    $(document).on('change', '#period', function () {
+
+        let $this = $(this);
+
+        let slug = $this.children('option:selected').data('cat')
+        let cat = $this.closest('.custom_packs_content').siblings('.custom_packs_name').find('h4').text()
+        let name = $this.closest('.custom_packs_serv_col').siblings('.js-col').find('h5').text()
+        let type = $('.now').data('type')
+        let period = $this.val()
+        let price = $this.children('option:selected').data(type)
+
+        let item = {
+            slug: slug,
+            category: cat,
+            name: name,
+            period: period,
+            price: price
+        }
+
+        services.push(item)
+
+        if (resultBody.children('.result_item').length) {
+            if (resultBody.children('.result_item').hasClass(slug)) {
+                let text = resultBody.children('.'+ slug).find('li:contains('+ name +')').parent()
+                $('.' + slug).find('ul').not(text).append('<li data-cur="' + price + '">' + name + '</li>')
+
+            } else {
+                resultBody.append('<div class="result_item ' + slug + '">' +
+                    '<h5>' + cat + '</h5>' +
+                    '<ul>' +
+                    '<li data-cur="' + price + '">' + name + '</li>' +
+                    '</ul>' +
+                    '</div>');
+            }
+        } else {
+            resultBody.append('<div class="result_item ' + slug + '">' +
+                '<h5>' + cat + '</h5>' +
+                '<ul>' +
+                '<li data-cur="' + price + '">' + name + '</li>' +
+                '</ul>' +
+                '</div>');
+        }
+
+
+    })
+    // caustom packages end
+
+
+});

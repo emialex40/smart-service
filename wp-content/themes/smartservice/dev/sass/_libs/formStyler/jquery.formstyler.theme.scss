@@ -2,13 +2,12 @@
 
 .jq-checkbox {
 	vertical-align: -4px;
-	width: 16px;
-	height: 16px;
+	width: 20px;
+	height: 20px;
 	margin: 0 4px 0 0;
 	border: 1px solid #C3C3C3;
-	background: linear-gradient(#FFF, #E6E6E6);
 	cursor: pointer;
-	border-radius: 3px;
+	position: relative;
 }
 .jq-radio {
 	vertical-align: -4px;
@@ -34,13 +33,13 @@
 }
 .jq-checkbox.checked {
 .jq-checkbox__div {
-	width: 8px;
-	height: 4px;
-	margin: 3px 0 0 3px;
-	border-bottom: 2px solid #666;
-	border-left: 2px solid #666;
-	-webkit-transform: rotate(-50deg);
-	transform: rotate(-50deg);
+	width: 12px;
+	height: 8px;
+	background: url(../img/angle-bottom-light.svg) no-repeat center center/cover;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }
 }
 .jq-radio.checked {
@@ -251,15 +250,15 @@ ul {
 li {
 	min-height: 18px;
 	padding: 5px 10px 6px;
-	color: #231F20;
+	color: $grey-light;
 &:hover {
 	 background-color: $blue-light;
-	 color: $black-light;
+	 color: $grey;
  }
 }
 li.selected {
 	background-color: $yellow;
-	color: $black-light;
+	color: $grey;
 }
 li.disabled {
 	color: #AAA;
@@ -284,10 +283,11 @@ li.option {
 	padding: 0 45px 0 10px;
 	border: 1px solid #CCC;
 	border-bottom-color: #B3B3B3;
-	border-radius: 4px;
+	//border-radius: 4px;
 	//background: linear-gradient(#FFF, #E6E6E6);
-	font-size: 14px;
-	color: $grey-light;
+	font-size: 13px;
+	font-weight: 600;
+	color: $grey;
 	cursor: pointer;
 &:active {
 	 background: #F5F5F5;
@@ -324,13 +324,11 @@ li.option {
 }
 .jq-selectbox__trigger-arrow {
 	position: absolute;
-	top: 14px;
-	right: 12px;
-	width: 0;
-	height: 0;
-	border-top: 5px solid #999;
-	border-right: 5px solid transparent;
-	border-left: 5px solid transparent;
+	top: 12px;
+	right: 8px;
+	width: 12px;
+	height: 8px;
+	background: url(../img/angle-bottom-light.svg) no-repeat center center/cover;
 }
 .jq-selectbox__dropdown {
 	box-sizing: border-box;
@@ -338,10 +336,12 @@ li.option {
 	margin: 2px 0 0;
 	padding: 0;
 	border: 1px solid #CCC;
-	border-radius: 4px;
+	//border-radius: 4px;
 	background: #FFF;
 	box-shadow: 0 2px 10px rgba(0,0,0,.2);
-	font: 14px/18px Arial, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	color: $grey;
 }
 .jq-selectbox__search {
 	margin: 5px;
