@@ -416,13 +416,12 @@ jQuery(document).ready(function ($) {
     // TODO: custom packages scripts beginning
 
     $(document).on('click', '.custom_packs_btn', function () {
-        if ($(this).hasClass('now'))
-            return;
+        if ($(this).hasClass('now')) return;
+
         let text = $(this).text()
         let dataType = $(this).data('type')
         $(this).addClass('now').siblings().removeClass('now')
         $('.custom_packs_result_header').find('strong').text(text)
-
 
     })
 
@@ -452,12 +451,14 @@ jQuery(document).ready(function ($) {
     let resultBody = $('.custom_packs_result_body_item')
 
     let $cookie = $.cookie('calc');
+    let priceView = $('.custom_packs_result_price').find('b');
 
     services = [];
     let data = JSON.stringify(services)
     $.cookie('calc', data)
     $(document).on('change', '#period', function () {
 
+        $('.custom_packs_result_btn').removeClass('disabled').removeAttr('disabled')
         let $this = $(this);
 
         let slug = $this.children('option:selected').data('cat')
@@ -467,41 +468,117 @@ jQuery(document).ready(function ($) {
         let period = $this.val()
         let price = $this.children('option:selected').data(type)
 
-        let item = {
-            slug: slug,
-            category: cat,
-            name: name,
-            period: period,
-            price: price
-        }
-
-        services.push(item)
-
         if (resultBody.children('.result_item').length) {
-            if (resultBody.children('.result_item').hasClass(slug)) {
-                let text = resultBody.children('.'+ slug).find('li:contains('+ name +')').parent()
-                $('.' + slug).find('ul').not(text).append('<li data-cur="' + price + '">' + name + '</li>')
+
+            let total = priceView.html()
+            let curPrice = resultBody.children('.result_item').find('li:contains(' + name + ')').data('cur')
+
+            if (period == 0) {
+                console.log('delete elm')
+                priceView.html(parseInt(total) - parseInt(curPrice))
+                resultBody.children('.result_item').find('li:contains(' + name + ')').remove();
 
             } else {
-                resultBody.append('<div class="result_item ' + slug + '">' +
-                    '<h5>' + cat + '</h5>' +
-                    '<ul>' +
-                    '<li data-cur="' + price + '">' + name + '</li>' +
-                    '</ul>' +
-                    '</div>');
+                console.log('add elm')
+                if (resultBody.children('.result_item').hasClass(slug)) {
+
+                    let isName = resultBody.children('.' + slug).find('li:contains(' + name + ')').text();
+                    let text = resultBody.children('.' + slug).find('li:contains(' + name + ')').parent()
+
+                    if (isName) {
+                        console.log('add is name')
+                        if (period == 0) {
+                            console.log('period is 0')
+                            priceView.html(parseInt(total) - parseInt(curPrice))
+                        } else {
+                            console.log('add not is name')
+                            priceView.html((parseInt(total) - parseInt(curPrice)) + parseInt(price))
+                            resultBody.children('.' + slug).find('li:contains(' + name + ')').children('.result_period').html(period)
+                        }
+
+                    } else {
+                        $('.' + slug).find('ul').not(text).append('<li data-cur="' + price + '"><span class="result_name">' + name + '</span><span' +
+                            ' class="result_period">'+ period +'</span></li>')
+                        priceView.html(parseInt(total) + parseInt(price))
+
+                    }
+
+                } else {
+                    console.log('add new cat')
+                    startAddElems(resultBody, slug, cat, name, period, price);
+                    priceView.html(parseInt(total) + parseInt(price))
+                }
             }
+
         } else {
-            resultBody.append('<div class="result_item ' + slug + '">' +
-                '<h5>' + cat + '</h5>' +
-                '<ul>' +
-                '<li data-cur="' + price + '">' + name + '</li>' +
-                '</ul>' +
-                '</div>');
+            console.log('first add')
+
+            if (period == 0) {
+                resultBody.children('.result_item').find('li:contains(' + name + ')').closest('.result_item').remove()
+            } else {
+                startAddElems(resultBody, slug, cat, name, period, price);
+
+                priceView.html(price)
+            }
+
         }
+
+
+    })
+
+    $('.custom_packs_result_btn').click(function () {
+        const arr = [];
+        const list = resultBody.find('.result_item').find('li');
+        const total = $('.custom_packs_result_price').find('b').text();
+        let type = $('.custom_packs_buttons').find('.now').text();
+
+        list.each(function (index, value) {
+            let text = value.childNodes[0].innerHTML
+            let period = value.childNodes[1].innerHTML
+            arr.push(text + ' - ' + period)
+        })
+
+        const string = arr.join(' || ')
+        $('.js-type').text(type)
+        $('#type').val(type)
+        $('#packages_list').val(string)
+        $('#total').val(total)
+
+
+        $.fancybox.open({
+            src: $('#custom_pcks_form'),
+            type: 'inline'
+        })
 
 
     })
     // caustom packages end
 
+    $(document).on('click', '.js-flats', function () {
+        let title = $(this).closest('.calc').siblings('.page-hero').find('h1').text()
+        let pack = $(this).closest('.row').find('.activate').text()
+        pack = $.trim(pack)
+        console.log(title)
+        $('#pack').val(title)
+        $('#pcs_name').val(pack)
+        $('.callback_form_header').find('h2').text(title)
+        $('.js-subtitle').text(pack)
+
+        $.fancybox.open({
+            src: $('#packs_flats'),
+            type: 'inline'
+        })
+    })
+
+
 
 });
+
+function startAddElems(elm, slug, cat, name, period, price) {
+    elm.append('<div class="result_item ' + slug + '">' +
+        '<h5>' + cat + '</h5>' +
+        '<ul>' +
+        '<li data-cur="' + price + '"><span class="result_name">' + name + '</span><span class="result_period">'+ period +'</span></li>' +
+        '</ul>' +
+        '</div>');
+}

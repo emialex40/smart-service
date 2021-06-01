@@ -21,8 +21,7 @@ $hero_img = get_the_post_thumbnail_url($id, 'full');
                     <p class=" wow animated fadeInUp delay-15s"><?php the_field('hm_text'); ?></p>
                 </div>
                 <div class="hero_buttons wow animated fadeInUp delay-2s">
-                    <a class="btn hero_btn"
-                       href="<?php the_field('Перетелефонуйте мені') ?>"><?php the_field('hm_hero_btn_title'); ?></a>
+                    <a class="btn hero_btn" data-fancybox data-src="#callback_form" href="javascript:;"><?php the_field('hm_hero_btn_title'); ?></a>
                     <a href="<?php the_field('hm_video_btn_link'); ?>" data-fancybox class="hero_video">
                         <b><i class="fas fa-play"></i></b>
                         <span><?php the_field('hm_video_btn_title'); ?></span>

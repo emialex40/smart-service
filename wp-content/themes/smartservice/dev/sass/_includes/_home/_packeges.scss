@@ -9,19 +9,21 @@
         line-height: 44px;
         margin: 0 auto;
         color: $blue;
-        border: 1px solid $blue-light;
         background: transparent;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         box-sizing: border-box;
+        border: 1px solid transparent;
         &.active {
             background: $blue-light;
             color: $dark;
+            border: 1px solid $blue-light;
         }
         &:hover {
-            background: $blue-light;
+            background: transparent;
             color: $dark;
+            border: 1px solid $blue-light;
         }
         @include _respond-to(768) {
             margin-bottom: 10px;
@@ -105,13 +107,8 @@
         &_price {
             display: flex;
             justify-content: center;
-            padding: 48px 0;
-            span:first-child {
-                font-size: 28px;
-                color: $black-light;
-                align-self: flex-start;
-            }
-            span:last-child {
+            padding: 48px 0 20px;
+            span {
                 font-size: 16px;
                 color: $black-light;
                 align-self: flex-end;
@@ -123,6 +120,24 @@
                 font-weight: 200;
                 color: $black-light;
                 line-height: 1;
+            }
+            &_sub {
+                display: flex;
+                justify-content: flex-end;
+                padding: 0 21% 48px;
+                b {
+                    font-size: 35px;
+                    font-weight: 200;
+                    color: $black-light;
+                    line-height: 1;
+                }
+                span {
+                    font-size: 16px;
+                    color: $black-light;
+                    align-self: flex-end;
+                    font-weight: 300;
+                    line-height: 1.2;
+                }
             }
         }
         &_content {

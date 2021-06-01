@@ -117,6 +117,13 @@ $query = new WP_Query($args);
                         </div>
                     </div>
                     <div class="services_cats_packs_item">
+                        <div class="services_cats_packs_title"><?php the_field('pakety_budynky_zagolovok', 'option'); ?></div>
+                        <div class="services_cats_packs_text"><?php the_field('pakety_budynky_tekst', 'option'); ?></div>
+                        <div class="services_cats_packs_btn">
+                            <a href="<?php the_field('pakety_budynky_posylannya', 'option'); ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                        </div>
+                    </div>
+                    <div class="services_cats_packs_item">
                         <div class="services_cats_packs_title"><?php the_field('paket_indyvidualnyj', 'option'); ?></div>
                         <div class="services_cats_packs_text"><?php the_field('paket_indyvidualnyj_tekst', 'option'); ?></div>
                         <div class="services_cats_packs_btn">

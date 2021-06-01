@@ -76,8 +76,35 @@ $cat_parent_link = get_category_link($cat_parent->term_id);
                     </div>
                 </div>
             </div>
+            
             <div class="row">
-                <div class="col-12">
+                <div class="col-xl-3 col-lg-4 col-12">
+                    <div class="services_cats_packs">
+                        <div class="services_cats_packs_item">
+                            <div class="services_cats_packs_title"><?php the_field('pakety_standart', 'option'); ?></div>
+                            <div class="services_cats_packs_text"><?php the_field('pakety_standart_tekst', 'option'); ?></div>
+                            <div class="services_cats_packs_btn">
+                                <a href="<?php the_field('pakety_standart_posylannya', 'option'); ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                            </div>
+                        </div>
+                        <div class="services_cats_packs_item">
+                            <div class="services_cats_packs_title"><?php the_field('pakety_budynky_zagolovok', 'option'); ?></div>
+                            <div class="services_cats_packs_text"><?php the_field('pakety_budynky_tekst', 'option'); ?></div>
+                            <div class="services_cats_packs_btn">
+                                <a href="<?php the_field('pakety_budynky_posylannya', 'option'); ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                            </div>
+                        </div>
+                        <div class="services_cats_packs_item">
+                            <div class="services_cats_packs_title"><?php the_field('paket_indyvidualnyj', 'option'); ?></div>
+                            <div class="services_cats_packs_text"><?php the_field('paket_indyvidualnyj_tekst', 'option'); ?></div>
+                            <div class="services_cats_packs_btn">
+                                <a href="<?php the_field('paket_indyvidualnyj_posylannya', 'option'); ?>"><?php the_field('detalnishe', 'option'); ?></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-9 col-lg-8 col-12">
                     <article class="post-article service_single_text">
                         <?php the_field('tekst_poslug'); ?>
                     </article>

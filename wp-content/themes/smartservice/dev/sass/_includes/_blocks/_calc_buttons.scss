@@ -18,22 +18,30 @@
     line-height: 44px;
     letter-spacing: 1px;
     background: transparent;
+    border: 1px solid transparent;
     color: $blue;
+    box-sizing: border-box;
+    box-shadow: none;
     @include _respond-to(1199) {
       font-size: 14px;
     }
     &:hover {
-      background: $yellow;
+      border: 1px solid $yellow;
+      background: transparent;
     }
     &.activate {
       background: $yellow;
+      border: 1px solid $yellow;
       color: $dark;
     }
     &_indi {
       background: $blue;
+      border: 1px solid $blue;
       color: $white;
+      box-sizing: border-box;
       &:hover {
         background: $blue-light;
+        border: 1px solid $blue-light;
       }
     }
   }

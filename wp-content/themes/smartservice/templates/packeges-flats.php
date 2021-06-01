@@ -42,9 +42,12 @@
                 </div>
                 <div class="packages_item_content">
                     <div class="packages_item_price">
-                        <span><?php the_field('vid', 'option'); ?></span>
-                        <b><?php echo get_field('fl_price_month', $term->taxonomy . '_' . $term->term_id); ?></b>
+                        <b><?php echo get_field('fl_price', $term->taxonomy . '_' . $term->term_id); ?></b>
                         <span><?php esc_html_e('грн', 'home'); ?></span>
+                    </div>
+                    <div class="packages_item_price_sub">
+                        <b><?php echo get_field('fl_price_month', $term->taxonomy . '_' . $term->term_id); ?></b>
+                        <span> <?php the_field('grn_na_mis', 'option'); ?></span>
                     </div>
                     <?php
                     $posts_args = [

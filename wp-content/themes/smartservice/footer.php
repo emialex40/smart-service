@@ -104,13 +104,36 @@ $logo_thumb = $logo['sizes']['gallery-thumb'];
 
 <?php include_once 'templates/mobile-menu.php'; ?>
 
+
+
 <script>
 var ajax_web_url = '<?php echo admin_url('admin-ajax.php', 'relative') ?>';
 </script>
 
+<div id="custom_pcks_form" style="display: none;">
+    <div class="callback_form_header">
+        <h2 class=""><?php the_field('individualnyj', 'option'); ?> пакет</h2>
+        <h5 class="callback_form_subtitle js-type"></h5>
+    </div>
+    <?php echo do_shortcode('' . get_field('cm_pcgs_form', 'option') . ''); ?>
+</div>
+
+<div id="callback_form" class="callback_form" style="display: none;">
+    <div class="callback_form_header">
+        <h2>передзвонить мені</h2>
+    </div>
+    <?php echo do_shortcode('' . get_field('callback_form', 'option') . ''); ?>
+</div>
+
+<div id="packs_flats" class="callback_form" style="display: none;">
+    <div class="callback_form_header">
+        <h2 class=""></h2>
+        <h5 class="callback_form_subtitle js-subtitle"></h5>
+    </div>
+    <?php echo do_shortcode('' . get_field('packs_standart', 'option') . ''); ?>
+</div>
+
 <!--<script src="/js/wow.min.js"></script>-->
-
-
 
 <?php wp_footer(); ?>
 <script>

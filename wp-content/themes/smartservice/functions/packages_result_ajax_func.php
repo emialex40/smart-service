@@ -16,7 +16,7 @@ function packages_result_func()
             $res_month = get_field($field . '_price_month', $tax . '_' . $cat_id);
             ?>
             <div class="calc_check_top">
-                <p><?php the_field('vy_otrymayete', 'option') ?></p>
+                <p class="calc_check_main"><?php the_field('vy_otrymayete', 'option') ?></p>
                 <p class="calc_check_padd">
                     <b class="calc_check_big"><?php echo $res_time; ?></b><span><?php the_field('godyny', 'option'); ?></span>
                 </p>
@@ -39,7 +39,7 @@ function packages_result_func()
             </div>
             <div class="calc_check_line"></div>
             <div class="calc_check_bottom">
-                <a class="btn calc_check_btn" href=""><?php the_field('zamovyty', 'option'); ?></a>
+                <a class="btn calc_check_btn js-flats" href="javascript:;"><?php the_field('zamovyty', 'option'); ?></a>
             </div>
 
             <?php

@@ -42,7 +42,7 @@ get_header();
                                 </div>
                             <?php endforeach; ?>
                             <div class="calc_buttons_col">
-                                <a href="javascript:;"
+                                <a href="<?php the_field('ctm_pcgs_link', 'option'); ?>"
                                    class="btn btn-no-shadow calc_buttons_btn calc_buttons_btn_indi">
                                     <?php echo get_field('individualnyj', 'option'); ?>
                                 </a>

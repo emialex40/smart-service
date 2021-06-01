@@ -1,0 +1,10 @@
+.callback_form {
+  max-width: 500px !important;
+  &_header {
+    padding-bottom: 30px;
+    text-align: center;
+  }
+  &_subtitle {
+    color: $font-color;
+  }
+}

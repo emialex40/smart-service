@@ -47,7 +47,7 @@ get_header();
 
                 </div>
                 <div class="col-lg-6 col-12">
-                    <div class="info_form contacts_form wow animated fadeInRight">
+                    <div id="#info" class="info_form contacts_form wow animated fadeInRight">
                         <h4 class="info_form_title"><?php the_field('ct_form_title'); ?></h4>
                         <div class="info_form_place">
                             <?php echo do_shortcode('' . get_field('ct_form') . ''); ?>

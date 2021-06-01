@@ -39,8 +39,9 @@ if ($loop->have_posts()) :
                                 <?php foreach ($periods as $period) : ?>
                                     <?php
                                     $mult = (float)$period['mnozhennya'];
-                                    $flats_price = get_field('czen_kvartyr');
-                                    $houses_price = get_field('cziny_budynkiv');
+                                    $flats_price = (float)get_field('czen_kvartyr');
+                                    $houses_price = (float)get_field('cziny_budynkiv');
+
                                     ?>
                                     <option value="<?php echo $period['csm_add_point']; ?>"
                                             data-cat="<?php echo $slug;  ?>"
